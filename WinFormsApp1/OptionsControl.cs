@@ -46,8 +46,9 @@ namespace WinFormsApp1
         private void back_menu_click(object sender, EventArgs e)
         {
             mainMenu = new mainMenuControl();
-            Parent.Controls.Remove(this);
+            MainFormInstance.Controls.Remove(this);
             MainFormInstance.Controls.Add(mainMenu);
+            mainMenu.MainFormInstance = MainFormInstance;
 
         }
     }
