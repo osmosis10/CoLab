@@ -30,19 +30,19 @@ namespace WinFormsApp1
                 modalBack.FormBorderStyle = FormBorderStyle.None;
                 modalBack.Opacity = .50d;
                 modalBack.BackColor = Color.Black;
-                modalBack.Size = this.Size;
-                modalBack.Location = this.Location;
+                modalBack.Size = MainFormInstance.Size;
+                modalBack.Location = MainFormInstance.Location;
                 modalBack.ShowInTaskbar = false;
                 modalBack.Show();
                 modal.Owner = modalBack;
 
-                parentX = this.Location.X;
-                parentY = this.Location.Y;
+                parentX = MainFormInstance.Location.X;
+                parentY = MainFormInstance.Location.Y;
 
                 // Set the initial position of the modal off-screen 
                 modal.StartPosition = FormStartPosition.Manual;
-                modal.Top = this.Top - modal.Height + 150; // Start above the main form
-                modal.Left = this.Left + (this.Width - modal.Width) / 2;
+                modal.Top = MainFormInstance.Top - modal.Height + 150; // Start above the main form
+                modal.Left = MainFormInstance.Left + (MainFormInstance.Width - modal.Width) / 2;
 
                 // Show the modal before starting the animation
                 modal.Shown += (s, args) =>
@@ -51,7 +51,7 @@ namespace WinFormsApp1
                     timer.Interval = 10; // Set time animation
                     timer.Tick += (s2, args2) =>
                     {
-                        if (modal.Top < this.Top + 100)
+                        if (modal.Top < MainFormInstance.Top + 100)
                         {
                             modal.Top += 5; // Move the modal down
                         }

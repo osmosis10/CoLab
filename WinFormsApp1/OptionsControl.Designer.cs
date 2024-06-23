@@ -32,7 +32,7 @@
             loadChanges = new Button();
             button3 = new Button();
             projectName = new Label();
-            fileList = new ListView();
+            projectList = new ListView();
             fileCol = new ColumnHeader();
             button1 = new Button();
             SuspendLayout();
@@ -46,6 +46,7 @@
             UploadClick.TabIndex = 0;
             UploadClick.Text = "Upload";
             UploadClick.UseVisualStyleBackColor = false;
+            UploadClick.Click += upload_click;
             // 
             // loadChanges
             // 
@@ -78,17 +79,18 @@
             projectName.TabIndex = 3;
             projectName.Text = "Project name";
             // 
-            // fileList
+            // projectList
             // 
-            fileList.BackColor = Color.FromArgb(79, 3, 78);
-            fileList.Columns.AddRange(new ColumnHeader[] { fileCol });
-            fileList.ForeColor = Color.FromArgb(255, 205, 41);
-            fileList.Location = new Point(399, 88);
-            fileList.Name = "fileList";
-            fileList.Size = new Size(180, 334);
-            fileList.TabIndex = 4;
-            fileList.UseCompatibleStateImageBehavior = false;
-            fileList.View = View.Details;
+            projectList.BackColor = Color.FromArgb(79, 3, 78);
+            projectList.Columns.AddRange(new ColumnHeader[] { fileCol });
+            projectList.ForeColor = Color.FromArgb(255, 205, 41);
+            projectList.Location = new Point(399, 88);
+            projectList.Name = "projectList";
+            projectList.Size = new Size(180, 334);
+            projectList.TabIndex = 4;
+            projectList.UseCompatibleStateImageBehavior = false;
+            projectList.View = View.Details;
+            projectList.Click += project_list_click;
             // 
             // fileCol
             // 
@@ -114,7 +116,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(83, 19, 122);
             Controls.Add(button1);
-            Controls.Add(fileList);
+            Controls.Add(projectList);
             Controls.Add(projectName);
             Controls.Add(button3);
             Controls.Add(loadChanges);
@@ -132,7 +134,7 @@
         private Button loadChanges;
         private Button button3;
         private Label projectName;
-        private ListView fileList;
+        private ListView projectList;
         private ColumnHeader fileCol;
         private Button button1;
     }
