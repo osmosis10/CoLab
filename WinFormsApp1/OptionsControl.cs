@@ -154,7 +154,7 @@ namespace WinFormsApp1
                 // if the git command worked then display success message
                 if (string.IsNullOrEmpty(error))
                 {
-                    MessageBox.Show($"push succsesful !");
+                    MessageBox.Show($"push succesful !");
 
                 }
                 // displays error message
@@ -164,6 +164,45 @@ namespace WinFormsApp1
                 }
             }
 
+        }
+
+        private void pull ()
+        {
+            ProcessStartInfo processStartInfo = new ProcessStartInfo
+            {
+                FileName = "cmd.exe",
+                Arguments = $"/c cd \"{FolderPathStorage.ProjectFolderPath}\" && git pull",
+                RedirectStandardOutput = true,
+                RedirectStandardError = true,
+                UseShellExecute = false,
+                CreateNoWindow = true,
+            };
+
+            // starting the execution
+            using (Process process = new Process())
+            {
+                process.StartInfo = processStartInfo;
+                process.Start();
+
+                //Read output
+
+                String output = process.StandardOutput.ReadToEnd();
+                String error = process.StandardError.ReadToEnd();
+
+                process.WaitForExit();
+
+                // if the git command worked then display success message
+                if (string.IsNullOrEmpty(error))
+                {
+                    MessageBox.Show($"pull succesful !");
+
+                }
+                // displays error message
+                else
+                {
+                    MessageBox.Show($"pull failed: {error}");
+                }
+            }
         }
 
         // MESSAGE TO ENTER SUMMARY OF CHANGES (git commit)
