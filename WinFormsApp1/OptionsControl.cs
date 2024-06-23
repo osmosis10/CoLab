@@ -112,17 +112,15 @@ namespace WinFormsApp1
                     }
                 }
 
-                // my path C:\Users\moses\OneDrive\Documents\Image-Line\FL Studio\Audio\Recorded
+                
                 FolderPathStorage.stemsDestinationPath = $"{FolderPathStorage.ProjectFolderPath}/stemStorage";
                 String stemsSource = FolderPathStorage.stemsSourcePath;
                 String stemDest = FolderPathStorage.stemsDestinationPath;
-
                 CopyStems(stemsSource, stemDest); // EXECUTE COPY COMMAND
 
 
 
             }
-
             
         }
 
@@ -182,7 +180,7 @@ namespace WinFormsApp1
 
             };
         }
-
+        // my path C:\Users\moses\OneDrive\Documents\Image-Line\FL Studio\Audio\Recorded
         private void CopyStems (String sourceDirectory, String destinationDirectory)
         {
             // Aborts copy process if source directory does not exist
@@ -201,10 +199,23 @@ namespace WinFormsApp1
             {
                 String ext = ".flp";
                 String projectName = FolderPathStorage.projectName.Substring(0, FolderPathStorage.projectName.Length - ext.Length);
-                MessageBox.Show($"Looking for files that start with {projectName}");
+                //MessageBox.Show($"Looking for files that start with {projectName}");
 
-                // Get all files in the source directory that start with the specified prefix
-                var filesToCopy = Directory.GetFiles(sourceDirectory, $"{FolderPathStorage.projectName}*");
+                // Prepare the search pattern based on projectName
+                string[] allFiles = Directory.GetFiles(sourceDirectory);
+
+                List<string> filesToCopy = new List<string>();
+
+                foreach (string file in allFiles)
+                {
+                    string fileName = Path.GetFileName(file);
+
+                    // Check if the file name starts with projectName
+                    if (fileName.StartsWith(projectName))
+                    {
+                        filesToCopy.Add(file); // Add the full file path to the list
+                    }
+                }
 
                 foreach (var file in filesToCopy)
                 {
@@ -215,18 +226,12 @@ namespace WinFormsApp1
                     File.Copy(file, destFile, true); // true to overwrite existing files
                 }
 
-                MessageBox.Show("Stem's sucessfully copied !");
+                MessageBox.Show("Stems successfully copied!");
             }
-
             catch (Exception ex)
             {
                 MessageBox.Show($"Stem transfer failed: {ex.Message}");
             }
-
-            
-
-           
-   
 
 
 
