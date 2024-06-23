@@ -130,10 +130,37 @@ namespace WinFormsApp1
 
         private void download_click(object sender, EventArgs e)
         {
+
+            // OCCURS IF PROJECT NAME IS NOT SELECTED
+            if (FolderPathStorage.projectName == null)
+            {
+                MessageBox.Show("Please select your project name from the list");
+                return;
+            }
+            // FILE BROWSER
+            using (FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog())
+            {
+                folderBrowserDialog.SelectedPath = "C:\\"; // default at C drive
+                folderBrowserDialog.Description = "Enter the location of your stems folder"; // title
+
+                if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
+                {
+                    FolderPathStorage.stemsSourcePath = folderBrowserDialog.SelectedPath; // STEM SOURCE FOLDER PATH
+                    MessageBox.Show($"{FolderPathStorage.stemsSourcePath}");
+
+                }
+
+                else
+                {
+                    return;
+                }
+
+            }
+
             // if neither radio button selected
             if (FolderPathStorage.stashOrDiscard == 0)
             {
-                MessageBox.Show("Please choose to either discard or stash local changes");
+                MessageBox.Show($"{FolderPathStorage.stashOrDiscard} Please choose to either discard or stash local changes");
                 return;
             }
 
@@ -151,6 +178,11 @@ namespace WinFormsApp1
                 command = "clean";
             }
 
+
+            // reverse order from the upload_click
+            FolderPathStorage.stemsDestinationPath = $"{FolderPathStorage.ProjectFolderPath}/stemStorage";
+            String stemsSource = FolderPathStorage.stemsDestinationPath;
+            String stemDest = FolderPathStorage.stemsSourcePath;
             pull();
             CopyStems(FolderPathStorage.stemsDestinationPath, FolderPathStorage.stemsSourcePath); // copy stems to the source folder
         }
@@ -322,7 +354,7 @@ namespace WinFormsApp1
             // Aborts copy process if source directory does not exist
             if (!Directory.Exists(sourceDirectory))
             {
-                MessageBox.Show("Error: source does not exist ABORT");
+                MessageBox.Show($"Error: source {sourceDirectory} does not exist ABORT");
             }
 
             // if destination folder does not exist, it creates it
