@@ -86,7 +86,7 @@ namespace WinFormsApp1
                 {
                     FolderPathStorage.stemsSourcePath = folderBrowserDialog.SelectedPath; // STEM SOURCE FOLDER PATH
                     MessageBox.Show($"{FolderPathStorage.stemsSourcePath}");
-           
+
                 }
 
                 else
@@ -107,23 +107,53 @@ namespace WinFormsApp1
                         MessageBox.Show(commitString);
                     }
 
-                    else { 
+                    else
+                    {
                         return;
                     }
                 }
 
-                
+
                 FolderPathStorage.stemsDestinationPath = $"{FolderPathStorage.ProjectFolderPath}/stemStorage";
                 String stemsSource = FolderPathStorage.stemsSourcePath;
                 String stemDest = FolderPathStorage.stemsDestinationPath;
                 CopyStems(stemsSource, stemDest); // EXECUTE COPY COMMAND
+                add();
+                commit();
+                push();
 
 
 
             }
-            
+
         }
 
+        private void download_click(object sender, EventArgs e)
+        {
+            // if neither radio button selected
+            if (FolderPathStorage.stashOrDiscard == 0)
+            {
+                MessageBox.Show("Please choose to either discard or stash local changes");
+                return;
+            }
+
+            String command = String.Empty;
+
+            // if stash is chosen
+            if (FolderPathStorage.stashOrDiscard == 1)
+            {
+                stash();
+            }
+
+            // if discard is chosen
+            if (FolderPathStorage.stashOrDiscard == 2)
+            {
+                command = "clean";
+            }
+
+            pull();
+            CopyStems(FolderPathStorage.stemsDestinationPath, FolderPathStorage.stemsSourcePath); // copy stems to the source folder
+        }
 
         private void push()
         {
@@ -166,8 +196,10 @@ namespace WinFormsApp1
 
         }
 
-        private void pull ()
+        private void pull()
         {
+           
+
             ProcessStartInfo processStartInfo = new ProcessStartInfo
             {
                 FileName = "cmd.exe",
@@ -192,7 +224,7 @@ namespace WinFormsApp1
                 process.WaitForExit();
 
                 // if the git command worked then display success message
-                if (string.IsNullOrEmpty(error))
+                if (process.ExitCode == 0)
                 {
                     MessageBox.Show($"pull succesful !");
 
@@ -205,22 +237,87 @@ namespace WinFormsApp1
             }
         }
 
+        // ADDS UNTRACKED FILES TO BE COMMITTED
+        private void add()
+        {
+
+            try
+            {
+                ProcessStartInfo processStartInfo = new ProcessStartInfo
+                {
+                    FileName = "cmd.exe",
+                    Arguments = $"/c cd \"{FolderPathStorage.ProjectFolderPath}\" && git add *",
+                    RedirectStandardOutput = true,
+                    RedirectStandardError = true,
+                    UseShellExecute = false,
+                    CreateNoWindow = true,
+                };
+
+                using (Process process = new Process())
+                {
+                    process.StartInfo = processStartInfo;
+                    process.Start();
+
+                    string output = process.StandardOutput.ReadToEnd();
+                    string error = process.StandardError.ReadToEnd();
+
+                    process.WaitForExit();
+
+                    if (process.ExitCode == 0)
+                    {
+                        MessageBox.Show($"Files sucessfully added {output}");
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Add Command Failed {error}");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}");
+            }
+
+        }
+
         // MESSAGE TO ENTER SUMMARY OF CHANGES (git commit)
         private void commit()
         {
             ProcessStartInfo processStartInfo = new ProcessStartInfo
             {
                 FileName = "cmd.exe",
-                Arguments = $"/c cd \"{FolderPathStorage.ProjectFolderPath}\" && git commit {FolderPathStorage.commitMessage}",
+                Arguments = $"/c cd \"{FolderPathStorage.ProjectFolderPath}\" && git commit -m \"{FolderPathStorage.commitMessage}\"",
                 RedirectStandardOutput = true,
                 RedirectStandardError = true,
                 UseShellExecute = false,
                 CreateNoWindow = true,
 
             };
+
+            using (Process process = new Process())
+            {
+                process.StartInfo = processStartInfo;
+                process.Start();
+
+                string output = process.StandardOutput.ReadToEnd();
+                string error = process.StandardError.ReadToEnd();
+
+                process.WaitForExit();
+
+                if (process.ExitCode == 0)
+                {
+                    MessageBox.Show($"Commit succesful {output}");
+                }
+                else
+                {
+                    MessageBox.Show($"Commit Command Failed {error}");
+                }
+            }
         }
+
+
         // my path C:\Users\moses\OneDrive\Documents\Image-Line\FL Studio\Audio\Recorded
-        private void CopyStems (String sourceDirectory, String destinationDirectory)
+        private void CopyStems(String sourceDirectory, String destinationDirectory)
         {
             // Aborts copy process if source directory does not exist
             if (!Directory.Exists(sourceDirectory))
@@ -228,7 +325,7 @@ namespace WinFormsApp1
                 MessageBox.Show("Error: source does not exist ABORT");
             }
 
-               // if destination folder does not exist, it creates it
+            // if destination folder does not exist, it creates it
             if (!Directory.Exists(destinationDirectory))
             {
                 Directory.CreateDirectory(destinationDirectory);
@@ -272,12 +369,58 @@ namespace WinFormsApp1
                 MessageBox.Show($"Stem transfer failed: {ex.Message}");
             }
 
-
-
         }
 
+        private void stash()
+        {
+            ProcessStartInfo processStartInfo = new ProcessStartInfo
+            {
+                FileName = "cmd.exe",
+                Arguments = $"/c cd \"{FolderPathStorage.ProjectFolderPath}\" && git stash",
+                RedirectStandardOutput = true,
+                RedirectStandardError = true,
+                UseShellExecute = false,
+                CreateNoWindow = true,
+            };
 
+            // starting the execution
+            using (Process process = new Process())
+            {
+                process.StartInfo = processStartInfo;
+                process.Start();
 
+                //Read output
+
+                String output = process.StandardOutput.ReadToEnd();
+                String error = process.StandardError.ReadToEnd();
+
+                process.WaitForExit();
+
+                // if the git command worked then display success message
+                if (process.ExitCode == 0)
+                {
+                    MessageBox.Show($"stash succesful !");
+
+                }
+                // displays error message
+                else
+                {
+                    MessageBox.Show($"stash failed: {error}");
+                }
+            }
+        }
+
+        private void stash_changes_click(object sender, EventArgs e)
+        {
+            FolderPathStorage.stashOrDiscard = 1;
+        }
+
+        private void stow_reapply_click(object sender, EventArgs e)
+        {
+            FolderPathStorage.stashOrDiscard = 2;
+        }
+
+        
     }
 
 

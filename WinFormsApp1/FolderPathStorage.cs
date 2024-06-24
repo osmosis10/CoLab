@@ -14,5 +14,7 @@ namespace WinFormsApp1
         public static String stemsSourcePath { get; set; }
         public static String stemsDestinationPath { get; set; }
 
+        public static int stashOrDiscard = 0; // 0 by default, 1 for discard and 2 for stash
+
     }
 }
