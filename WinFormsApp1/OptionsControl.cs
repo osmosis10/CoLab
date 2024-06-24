@@ -187,6 +187,51 @@ namespace WinFormsApp1
             CopyStems(FolderPathStorage.stemsDestinationPath, FolderPathStorage.stemsSourcePath); // copy stems to the source folder
         }
 
+        private void launch_project_click(object sender, EventArgs e)
+        {
+            if (FolderPathStorage.projectName == null)
+            {
+                MessageBox.Show("Please the project from the list");
+                return;
+            }
+
+            ProcessStartInfo processStartInfo = new ProcessStartInfo
+            {
+                FileName = "cmd.exe",
+                Arguments = $"/c cd \"{FolderPathStorage.ProjectFolderPath}\" && start {FolderPathStorage.projectName}",
+                RedirectStandardOutput = true,
+                RedirectStandardError = true,
+                UseShellExecute = false,
+                CreateNoWindow = true,
+            };
+
+            using (Process process = new Process())
+            {
+                process.StartInfo = processStartInfo;
+                process.Start();
+
+                //Read output
+
+                String output = process.StandardOutput.ReadToEnd();
+                String error = process.StandardError.ReadToEnd();
+
+                process.WaitForExit();
+
+                // if the git command worked then display success message
+                if (process.ExitCode == 0)
+                {
+                    return;
+
+                }
+                // displays error message
+                else
+                {
+                    MessageBox.Show($"Launch failed for {FolderPathStorage.projectName} in folder {FolderPathStorage.ProjectFolderPath} {error}");
+                    return;
+                }
+            }
+        }
+
         private void push()
         {
             ProcessStartInfo processStartInfo = new ProcessStartInfo
@@ -452,50 +497,7 @@ namespace WinFormsApp1
             FolderPathStorage.stashOrDiscard = 2;
         }
 
-        private void launch_project_click(object sender, EventArgs e)
-        {
-            if (FolderPathStorage.projectName == null)
-            {
-                MessageBox.Show("Please the project from the list");
-                return;
-            }
-
-            ProcessStartInfo processStartInfo = new ProcessStartInfo
-            {
-                FileName = "cmd.exe",
-                Arguments = $"/c cd \"{FolderPathStorage.ProjectFolderPath}\" && start {FolderPathStorage.projectName}",
-                RedirectStandardOutput = true,
-                RedirectStandardError = true,
-                UseShellExecute = false,
-                CreateNoWindow = true,
-            };
-
-            using (Process process = new Process())
-            {
-                process.StartInfo = processStartInfo;
-                process.Start();
-
-                //Read output
-
-                String output = process.StandardOutput.ReadToEnd();
-                String error = process.StandardError.ReadToEnd();
-
-                process.WaitForExit();
-
-                // if the git command worked then display success message
-                if (process.ExitCode == 0)
-                {
-                    return;
-
-                }
-                // displays error message
-                else
-                {
-                    MessageBox.Show($"Launch failed for {FolderPathStorage.projectName} in folder {FolderPathStorage.ProjectFolderPath} {error}");
-                    return;
-                }
-            }
-        }
+        
     }
 
 
