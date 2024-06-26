@@ -17,7 +17,8 @@ namespace WinFormsApp1
         public static String commitMessage { get; set; } // User update message
         public static String stemsSourcePath { get; set; } // path to FL studio stem folder
         public static String stemsDestinationPath { get; set; } // path
-
+        public static String email {  get; set; } // user email
+        public static String password { get; set; } // user password (look into encryption)
         public static int stashOrDiscard = 0; // 0 by default, 1 for discard and 2 for stash
 
         // Clears class data contents
@@ -30,6 +31,7 @@ namespace WinFormsApp1
             stemsDestinationPath = null;
             stashOrDiscard = 0;
         }
+
 
     }
 

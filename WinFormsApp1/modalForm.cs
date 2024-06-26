@@ -42,7 +42,7 @@ namespace WinFormsApp1
 
         /******************************************************************************************************************************
          * |MODALITY FUNCTIONS|
-         * ***************************************************************************************************************************/
+         ****************************************************************************************************************************/
 
         // modalForm_Load(): Gives sign in modal rounded corners
         private void modalForm_Load(object sender, EventArgs e)
@@ -56,14 +56,12 @@ namespace WinFormsApp1
         private void modalEffect_Timer_Tick(object sender, EventArgs e)
         {
             this.Location = new Point(Form1.parentX + 160, Form1.parentY + 2);
-
         }
 
-        // leave_email(): should set color for placeholder (not functional)
-        private void leave_email(object sender, EventArgs e)
-        {
-            emailBox.ForeColor = Color.FromArgb(255, 205, 41);
-        }
+
+        /******************************************************************************************************************************
+         * |HANDLER FUNCTIONS|
+         ****************************************************************************************************************************/
 
         // enter_email(): set's color to characters
         private void enter_email(object sender, EventArgs e)
@@ -71,17 +69,89 @@ namespace WinFormsApp1
             emailBox.ForeColor = Color.FromArgb(255, 205, 41);
         }
 
-        // mouse_hover(): Set's underline when user hovers
+        // email_field_change(): Constantly updates, set's to null if empty
+        private void email_field_change(object sender, EventArgs e)
+        {
+            emailBox.ForeColor = Color.FromArgb(255, 205, 41);
+            if (emailBox.Text.Length == 0)
+            {
+                FolderPathStorage.email = null;
+            }
+            else
+            {
+                FolderPathStorage.email = emailBox.Text; // statement to set it null if empty (add it)
+
+            }
+        }
+
+        // password_field_change(): Constantly updates, set's to null if empty
+        private void password_field_change(object sender, EventArgs e)
+        {
+            emailBox.ForeColor = Color.FromArgb(255, 205, 41);
+            if (passwordBox.Text.Length == 0)
+            {
+                FolderPathStorage.password = null;
+            }
+            else
+            {
+                FolderPathStorage.password = passwordBox.Text; // statement to set it null if empty (add it)
+
+            }
+        }
+
+        // mouse_hover(): Set's underline when user hovers over 'back' label
         private void mouse_hover(object sender, EventArgs e)
         {
             backClick.Font = new Font(backClick.Font, FontStyle.Underline);
         }
 
-        // mouseLeave(): Removes underline when user stops hovering
+        // mouseLeave(): Removes underline when user stops hovering over 'back' label
         private void mouseLeave(object sender, EventArgs e)
         {
             backClick.Font = new Font(backClick.Font, FontStyle.Regular);
         }
+
+        // modal_key_down(): handlers for key presses in modal
+        private void modal_key_down(object sender, KeyEventArgs e)
+        {
+            // Upon enter key down launches file browser to
+            // to select where project folder will reside
+            if (e.KeyCode == Keys.Enter)
+            {
+                // Check to ensure fields are filled out
+                if (FolderPathStorage.email == null || FolderPathStorage.password == null)
+                {
+                    MessageBox.Show("Please fill required fields");
+                    return;
+                }
+
+                using (FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog())
+                {
+                    folderBrowserDialog.SelectedPath = "C:\\"; // default at C drive
+                    folderBrowserDialog.Description = "Choose a home for your project6"; // title
+
+                    if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        FolderPathStorage.ProjectFolderPath = folderBrowserDialog.SelectedPath;
+                    }
+
+                }
+            }
+
+            // Upon escape key down, modal closes (add animation in the future
+            if (e.KeyCode == Keys.Escape)
+            {
+                this.Close();
+            }
+        }
+
+        // (Will be used to create repo from CLI)
+        public void create_repo(String email, String password)
+        {
+            int i = 0;
+        }
+
+
     }
 
     // class to make round corners for modal form
@@ -106,4 +176,6 @@ namespace WinFormsApp1
         [System.Runtime.InteropServices.DllImportAttribute("user32.dll")]
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
     }
+
+    
 }

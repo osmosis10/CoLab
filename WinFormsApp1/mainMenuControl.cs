@@ -134,7 +134,7 @@ namespace WinFormsApp1
                 // if the git command worked then window changes to show new options
                 if (string.IsNullOrEmpty(error))
                 {
-                    
+
                     OptionsControl = new OptionsControl();
                     OptionsControl.Dock = DockStyle.Fill;
                     MainFormInstance.Controls.Clear();
@@ -149,7 +149,5 @@ namespace WinFormsApp1
                 }
             }
         }
-
-        
     }
 }

@@ -81,8 +81,6 @@ namespace WinFormsApp1
                     RunGitStatus(folderBrowserDialog.SelectedPath);
                 }
 
-
-
             }
         }
 

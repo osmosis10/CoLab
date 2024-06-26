@@ -37,10 +37,11 @@
             // 
             button2.BackColor = Color.FromArgb(255, 205, 41);
             button2.FlatStyle = FlatStyle.Flat;
-            button2.Font = new Font("Unispace", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button2.Location = new Point(198, 312);
+            button2.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button2.Location = new Point(226, 416);
+            button2.Margin = new Padding(3, 4, 3, 4);
             button2.Name = "button2";
-            button2.Size = new Size(188, 37);
+            button2.Size = new Size(215, 49);
             button2.TabIndex = 5;
             button2.Text = "Exit";
             button2.UseVisualStyleBackColor = false;
@@ -50,10 +51,11 @@
             // 
             existing_click.BackColor = Color.FromArgb(255, 205, 41);
             existing_click.FlatStyle = FlatStyle.Flat;
-            existing_click.Font = new Font("Unispace", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            existing_click.Location = new Point(198, 220);
+            existing_click.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            existing_click.Location = new Point(226, 293);
+            existing_click.Margin = new Padding(3, 4, 3, 4);
             existing_click.Name = "existing_click";
-            existing_click.Size = new Size(188, 37);
+            existing_click.Size = new Size(215, 49);
             existing_click.TabIndex = 4;
             existing_click.Text = "Existing Project";
             existing_click.UseVisualStyleBackColor = false;
@@ -63,10 +65,11 @@
             // 
             createProject.BackColor = Color.FromArgb(255, 205, 41);
             createProject.FlatStyle = FlatStyle.Flat;
-            createProject.Font = new Font("Unispace", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            createProject.Location = new Point(198, 119);
+            createProject.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            createProject.Location = new Point(226, 159);
+            createProject.Margin = new Padding(3, 4, 3, 4);
             createProject.Name = "createProject";
-            createProject.Size = new Size(188, 37);
+            createProject.Size = new Size(215, 49);
             createProject.TabIndex = 3;
             createProject.Text = "Create";
             createProject.UseVisualStyleBackColor = false;
@@ -74,14 +77,15 @@
             // 
             // mainMenuControl
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(83, 19, 122);
             Controls.Add(button2);
             Controls.Add(existing_click);
             Controls.Add(createProject);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "mainMenuControl";
-            Size = new Size(600, 650);
+            Size = new Size(686, 867);
             ResumeLayout(false);
         }
 
