@@ -8,11 +8,16 @@ namespace WinFormsApp1
         public Form1()
         {
             InitializeComponent();
-            
-        }
 
-        public static int parentX, parentY;
-        private void button1_Click(object sender, EventArgs e)
+        }
+        /******************************************************************************************************************************
+         * |CLICK HANDLER'S|
+         * ***************************************************************************************************************************/
+        public static int parentX, parentY; // var's for parent form width/height
+
+        /******************************************************************************************************************************/
+        // create_button(): Launches credential modal to be used for creating new project folder
+        private void create_button(object sender, EventArgs e)
         {
             Form modalBack = new Form();
             using (modalForm modal = new modalForm())
@@ -44,7 +49,7 @@ namespace WinFormsApp1
                     {
                         if (modal.Top < this.Top + 100)
                         {
-                            modal.Top += 5; // Move the modal down
+                            modal.Top += 8; // Move the modal down
                         }
                         else
                         {
@@ -61,6 +66,8 @@ namespace WinFormsApp1
             }
         }
 
+        /******************************************************************************************************************************/
+        // project_click(): Upon selecting valid project folder, takes user to Version controller options
         private void project_click(object sender, EventArgs e)
         {
             using (FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog())
@@ -79,11 +86,18 @@ namespace WinFormsApp1
             }
         }
 
+        /******************************************************************************************************************************/
+        // exit_click(): Closes the application
         private void exit_click(object sender, EventArgs e)
         {
             this.Close();
         }
 
+        /******************************************************************************************************************************
+         * |GIT FUNCTIONS|
+         * ***************************************************************************************************************************/
+
+        // RunGitStatus(): Run's git status to confirm folder is a repo
         private void RunGitStatus(String folderPath)
         {
             ProcessStartInfo ProcessStartInfo = new ProcessStartInfo
@@ -94,7 +108,7 @@ namespace WinFormsApp1
                 RedirectStandardError = true,
                 UseShellExecute = false,
                 CreateNoWindow = true,
-               
+
             };
 
             // starting the execution
@@ -127,5 +141,12 @@ namespace WinFormsApp1
                 }
             }
         }
+
+        private void test_git_creds(String email, String password)
+        {
+
+        }
+
+       
     }
 }

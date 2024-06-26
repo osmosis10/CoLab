@@ -31,6 +31,7 @@ namespace WinFormsApp1
         // back_menu_click(): Return user to main menu
         private void back_menu_click(object sender, EventArgs e)
         {
+            FolderPathStorage.Clear(); // clears data
             mainMenu = new mainMenuControl();
             MainFormInstance.Controls.Remove(this);
             MainFormInstance.Controls.Add(mainMenu);
@@ -61,7 +62,6 @@ namespace WinFormsApp1
                MessageBox.Show("Please select your project name from the list");
                return;
            }
-
 
            // File browser for FL Studio stem source folder
            using (FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog())
@@ -269,7 +269,7 @@ namespace WinFormsApp1
                 process.WaitForExit();
 
                 // if the git command worked then display success message
-                if (string.IsNullOrEmpty(error))
+                if (process.ExitCode == 0)
                 {
                     MessageBox.Show($"push succesful !");
 

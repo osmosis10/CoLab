@@ -44,30 +44,38 @@
             // commitTitle
             // 
             commitTitle.AutoSize = true;
-            commitTitle.Location = new Point(48, 9);
+            commitTitle.Font = new Font("Unispace", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            commitTitle.ForeColor = Color.FromArgb(255, 205, 41);
+            commitTitle.Location = new Point(33, 9);
             commitTitle.Name = "commitTitle";
-            commitTitle.Size = new Size(146, 15);
+            commitTitle.Size = new Size(175, 14);
             commitTitle.TabIndex = 1;
             commitTitle.Text = "Summarize your changes !";
             // 
             // commit_confirm
             // 
+            commit_confirm.BackColor = Color.FromArgb(255, 205, 41);
+            commit_confirm.Cursor = Cursors.Hand;
+            commit_confirm.Font = new Font("Unispace", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             commit_confirm.Location = new Point(147, 115);
             commit_confirm.Name = "commit_confirm";
             commit_confirm.Size = new Size(75, 23);
             commit_confirm.TabIndex = 2;
             commit_confirm.Text = "Confirm";
-            commit_confirm.UseVisualStyleBackColor = true;
+            commit_confirm.UseVisualStyleBackColor = false;
             commit_confirm.Click += commit_confirm_click;
             // 
             // commit_back
             // 
+            commit_back.BackColor = Color.FromArgb(255, 205, 41);
+            commit_back.Cursor = Cursors.Hand;
+            commit_back.Font = new Font("Unispace", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             commit_back.Location = new Point(12, 115);
             commit_back.Name = "commit_back";
             commit_back.Size = new Size(75, 23);
             commit_back.TabIndex = 3;
-            commit_back.Text = "back";
-            commit_back.UseVisualStyleBackColor = true;
+            commit_back.Text = "cancel";
+            commit_back.UseVisualStyleBackColor = false;
             commit_back.Click += commit_back_click;
             commit_back.KeyDown += commit_key_click;
             // 
@@ -75,6 +83,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.Indigo;
             ClientSize = new Size(234, 161);
             Controls.Add(commit_back);
             Controls.Add(commit_confirm);

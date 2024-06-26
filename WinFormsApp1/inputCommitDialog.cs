@@ -19,7 +19,7 @@ namespace WinFormsApp1
         }
 
 
-        // obtains update message to be used for push
+        // commit_confirm_click(): obtains update message to be used for push
         private void commit_confirm_click(object sender, EventArgs e)
         {
             FolderPathStorage.commitMessage = this.Controls.OfType<TextBox>().FirstOrDefault()?.Text;
@@ -27,13 +27,13 @@ namespace WinFormsApp1
             this.Close();
         }
 
-        // back button to project options menu
+        // commit_back_click(): back button to project options menu
         private void commit_back_click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        // same behaviour as clicking back button
+        // commit_key_click(): same behaviour as clicking back button
         private void commit_key_click(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape)

@@ -46,6 +46,8 @@
             // UploadClick
             // 
             UploadClick.BackColor = Color.FromArgb(255, 205, 41);
+            UploadClick.Cursor = Cursors.Hand;
+            UploadClick.Font = new Font("Unispace", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             UploadClick.Location = new Point(29, 132);
             UploadClick.Name = "UploadClick";
             UploadClick.Size = new Size(119, 39);
@@ -57,6 +59,8 @@
             // loadChanges
             // 
             loadChanges.BackColor = Color.FromArgb(255, 205, 41);
+            loadChanges.Cursor = Cursors.Hand;
+            loadChanges.Font = new Font("Unispace", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             loadChanges.Location = new Point(29, 242);
             loadChanges.Name = "loadChanges";
             loadChanges.Size = new Size(119, 45);
@@ -68,6 +72,8 @@
             // button3
             // 
             button3.BackColor = Color.FromArgb(255, 205, 41);
+            button3.Cursor = Cursors.Hand;
+            button3.Font = new Font("Unispace", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button3.Location = new Point(29, 361);
             button3.Name = "button3";
             button3.Size = new Size(119, 42);
@@ -90,6 +96,7 @@
             // 
             projectList.BackColor = Color.FromArgb(79, 3, 78);
             projectList.Columns.AddRange(new ColumnHeader[] { fileCol });
+            projectList.Cursor = Cursors.Hand;
             projectList.ForeColor = Color.FromArgb(255, 205, 41);
             projectList.Location = new Point(399, 88);
             projectList.Name = "projectList";
@@ -161,6 +168,8 @@
             // launchProject
             // 
             launchProject.BackColor = Color.FromArgb(255, 205, 41);
+            launchProject.Cursor = Cursors.Hand;
+            launchProject.Font = new Font("Unispace", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             launchProject.Location = new Point(212, 558);
             launchProject.Name = "launchProject";
             launchProject.Size = new Size(166, 28);
@@ -182,7 +191,6 @@
             Controls.Add(button3);
             Controls.Add(loadChanges);
             Controls.Add(UploadClick);
-            Cursor = Cursors.Hand;
             Name = "OptionsControl";
             Size = new Size(600, 650);
             changesRadioBox.ResumeLayout(false);

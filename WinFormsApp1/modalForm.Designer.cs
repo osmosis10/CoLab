@@ -32,9 +32,9 @@
             sign_in_title = new Label();
             modalEffect_Timer = new System.Windows.Forms.Timer(components);
             pictureBox1 = new PictureBox();
-            back_click = new Label();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
+            backClick = new Label();
+            emailBox = new TextBox();
+            passwordBox = new TextBox();
             user_panel = new Panel();
             panel1 = new Panel();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -65,37 +65,45 @@
             pictureBox1.TabIndex = 2;
             pictureBox1.TabStop = false;
             // 
-            // back_click
+            // backClick
             // 
-            back_click.AutoSize = true;
-            back_click.Font = new Font("Unispace", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            back_click.ForeColor = Color.FromArgb(255, 205, 41);
-            back_click.Location = new Point(12, 150);
-            back_click.Name = "back_click";
-            back_click.Size = new Size(35, 14);
-            back_click.TabIndex = 3;
-            back_click.Text = "back";
-            back_click.Click += backClick;
+            backClick.AutoSize = true;
+            backClick.Font = new Font("Unispace", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            backClick.ForeColor = Color.FromArgb(255, 205, 41);
+            backClick.Location = new Point(12, 150);
+            backClick.Name = "backClick";
+            backClick.Padding = new Padding(5);
+            backClick.Size = new Size(45, 24);
+            backClick.TabIndex = 3;
+            backClick.Text = "back";
+            backClick.Click += back_click;
+            backClick.MouseLeave += mouseLeave;
+            backClick.MouseHover += mouse_hover;
             // 
-            // textBox1
+            // emailBox
             // 
-            textBox1.BackColor = Color.Indigo;
-            textBox1.BorderStyle = BorderStyle.None;
-            textBox1.ForeColor = Color.FromArgb(255, 205, 41);
-            textBox1.Location = new Point(74, 53);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(244, 16);
-            textBox1.TabIndex = 4;
+            emailBox.BackColor = Color.Indigo;
+            emailBox.BorderStyle = BorderStyle.None;
+            emailBox.ForeColor = Color.FromArgb(255, 205, 41);
+            emailBox.Location = new Point(74, 53);
+            emailBox.Name = "emailBox";
+            emailBox.PlaceholderText = "Enter your email";
+            emailBox.Size = new Size(244, 16);
+            emailBox.TabIndex = 4;
+            emailBox.Enter += enter_email;
+            emailBox.Leave += leave_email;
             // 
-            // textBox2
+            // passwordBox
             // 
-            textBox2.BackColor = Color.Indigo;
-            textBox2.BorderStyle = BorderStyle.None;
-            textBox2.ForeColor = Color.FromArgb(255, 205, 41);
-            textBox2.Location = new Point(74, 103);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(244, 16);
-            textBox2.TabIndex = 5;
+            passwordBox.BackColor = Color.Indigo;
+            passwordBox.BorderStyle = BorderStyle.None;
+            passwordBox.ForeColor = Color.FromArgb(255, 205, 41);
+            passwordBox.Location = new Point(74, 103);
+            passwordBox.Name = "passwordBox";
+            passwordBox.PlaceholderText = "Enter Password";
+            passwordBox.Size = new Size(244, 16);
+            passwordBox.TabIndex = 5;
+            passwordBox.UseSystemPasswordChar = true;
             // 
             // user_panel
             // 
@@ -123,9 +131,9 @@
             ClientSize = new Size(404, 173);
             Controls.Add(panel1);
             Controls.Add(user_panel);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
-            Controls.Add(back_click);
+            Controls.Add(passwordBox);
+            Controls.Add(emailBox);
+            Controls.Add(backClick);
             Controls.Add(pictureBox1);
             Controls.Add(sign_in_title);
             Cursor = Cursors.Hand;
@@ -145,9 +153,9 @@
         private Label sign_in_title;
         private System.Windows.Forms.Timer modalEffect_Timer;
         private PictureBox pictureBox1;
-        private Label back_click;
-        private TextBox textBox1;
-        private TextBox textBox2;
+        private Label backClick;
+        private TextBox emailBox;
+        private TextBox passwordBox;
         private Panel user_panel;
         private Panel panel1;
     }
