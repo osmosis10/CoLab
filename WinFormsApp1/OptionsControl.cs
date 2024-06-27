@@ -42,200 +42,191 @@ namespace WinFormsApp1
         /******************************************************************************************************************************/
         // project_list_click(): Obtain project name on click
         private void project_list_click(object sender, EventArgs e)
-       {
-           if (projectList.SelectedItems.Count > 0)
-           {
-               ListViewItem selectedProject = projectList.SelectedItems[0];
-               String itemText = selectedProject.Text;
-               FolderPathStorage.projectName = selectedProject.Text; // store project name
-               //MessageBox.Show($"{FolderPathStorage.projectName}"); test
-           }
-       }
+        {
+            if (projectList.SelectedItems.Count > 0)
+            {
+                ListViewItem selectedProject = projectList.SelectedItems[0];
+                String itemText = selectedProject.Text;
+                FolderPathStorage.projectName = selectedProject.Text; // store project name
+                                                                      
+            }
+        }
 
         /******************************************************************************************************************************/
         // upload_click(): upload's project state to online location
         private void upload_click(object sender, EventArgs e)
-       {
-           // OCCURS IF PROJECT NAME IS NOT SELECTED
-           if (FolderPathStorage.projectName == null)
-           {
-               MessageBox.Show("Please select your project name from the list");
-               return;
-           }
+        {
+            // OCCURS IF PROJECT NAME IS NOT SELECTED
+            if (FolderPathStorage.projectName == null)
+            {
+                MessageBox.Show("Please select your project name from the list");
+                return;
+            }
 
-           // File browser for FL Studio stem source folder
-           using (FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog())
-           {
-               folderBrowserDialog.SelectedPath = "C:\\"; // default at C drive
-               folderBrowserDialog.Description = "Enter the location of your stems folder"; // title
+            if (FolderPathStorage.commitMessage == null)
+            {
+                MessageBox.Show("Please create your upload summary");
+                return;
+            }
 
-               if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
-               {
-                   FolderPathStorage.stemsSourcePath = folderBrowserDialog.SelectedPath; // STEM SOURCE FOLDER PATH
-                   MessageBox.Show($"{FolderPathStorage.stemsSourcePath}");
+            // File browser for FL Studio stem source folder
+            using (FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog())
+            {
+                folderBrowserDialog.SelectedPath = "C:\\"; // default at C drive
+                folderBrowserDialog.Description = "Enter the location of your stems folder"; // title
 
-               }
+                if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
+                {
+                    FolderPathStorage.stemsSourcePath = folderBrowserDialog.SelectedPath; // STEM SOURCE FOLDER PATH
+                    MessageBox.Show($"{FolderPathStorage.stemsSourcePath}");
 
-               else
-               {
-                   return;
-               }
+                }
 
-           }
+                else
+                {
+                    return;
+                }
 
-           // Commit message box
-           if (FolderPathStorage.stemsSourcePath != null)
-           {
+            }
 
-               if (FolderPathStorage.commitMessage == null)
-               {
-                   using (inputCommitDialog inputCommitDialog = new inputCommitDialog())
-                   {
-                       if (inputCommitDialog.ShowDialog() == DialogResult.OK)
-                       {
-                           string commitString = FolderPathStorage.commitMessage;
-                           MessageBox.Show(commitString);
-                       }
-
-                       else
-                       {
-                           return;
-                       }
-                   }
-               }
+            // Commit message box
+            if (FolderPathStorage.stemsSourcePath != null)
+            {
 
 
-               FolderPathStorage.stemsDestinationPath = $"{FolderPathStorage.ProjectFolderPath}/stemStorage";
-               String stemsSource = FolderPathStorage.stemsSourcePath;
-               String stemDest = FolderPathStorage.stemsDestinationPath;
-               CopyStems(stemsSource, stemDest); // Executes copy command
-               add();
-               commit();
-               push();
-           }
 
-       }
+
+                FolderPathStorage.stemsDestinationPath = $"{FolderPathStorage.ProjectFolderPath}/stemStorage";
+                String stemsSource = FolderPathStorage.stemsSourcePath;
+                String stemDest = FolderPathStorage.stemsDestinationPath;
+                CopyStems(stemsSource, stemDest); // Executes copy command
+                push();
+            }
+
+        }
 
         /******************************************************************************************************************************/
         // download_click(): download's most recent project state
         private void download_click(object sender, EventArgs e)
-       {
+        {
 
-           // OCCURS IF PROJECT NAME IS NOT SELECTED
-           if (FolderPathStorage.projectName == null)
-           {
-               MessageBox.Show("Please select your project name from the list");
-               return;
-           }
-           // FILE BROWSER
-           using (FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog())
-           {
-               folderBrowserDialog.SelectedPath = "C:\\"; // default at C drive
-               folderBrowserDialog.Description = "Enter the location of your stems folder"; // title
+            // OCCURS IF PROJECT NAME IS NOT SELECTED
+            if (FolderPathStorage.projectName == null)
+            {
+                MessageBox.Show("Please select your project name from the list");
+                return;
+            }
 
-               if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
-               {
-                   FolderPathStorage.stemsSourcePath = folderBrowserDialog.SelectedPath; // STEM SOURCE FOLDER PATH
-                   MessageBox.Show($"{FolderPathStorage.stemsSourcePath}");
+            
+            // FILE BROWSER
+            using (FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog())
+            {
+                folderBrowserDialog.SelectedPath = "C:\\"; // default at C drive
+                folderBrowserDialog.Description = "Enter the location of your stems folder"; // title
 
-               }
+                if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
+                {
+                    FolderPathStorage.stemsSourcePath = folderBrowserDialog.SelectedPath; // STEM SOURCE FOLDER PATH
+                    MessageBox.Show($"{FolderPathStorage.stemsSourcePath}");
 
-               else
-               {
-                   return;
-               }
+                }
 
-           }
+                else
+                {
+                    return;
+                }
 
-           // if neither radio button selected
-           if (FolderPathStorage.stashOrDiscard == 0)
-           {
-               MessageBox.Show($"{FolderPathStorage.stashOrDiscard} Please choose to either discard or stash local changes");
-               return;
-           }
+            }
 
-           String command = String.Empty;
+            // if neither radio button selected
+            if (FolderPathStorage.stashOrDiscard == 0)
+            {
+                MessageBox.Show($"{FolderPathStorage.stashOrDiscard} Please choose to either discard or stash local changes");
+                return;
+            }
 
-           // if stash is chosen
-           if (FolderPathStorage.stashOrDiscard == 1)
-           {
-               stash();
-           }
+            String command = String.Empty;
 
-           // if discard is chosen
-           if (FolderPathStorage.stashOrDiscard == 2)
-           {
-               command = "clean";
-           }
+            // if stash is chosen
+            if (FolderPathStorage.stashOrDiscard == 1)
+            {
+                stash();
+            }
 
-           // reverse order from the upload_click
-           FolderPathStorage.stemsDestinationPath = $"{FolderPathStorage.ProjectFolderPath}/stemStorage";
-           String stemsSource = FolderPathStorage.stemsDestinationPath;
-           String stemDest = FolderPathStorage.stemsSourcePath;
-           pull();
-           CopyStems(FolderPathStorage.stemsDestinationPath, FolderPathStorage.stemsSourcePath); // copy stems to the source folder
-       }
+            // if discard is chosen (TBD)
+            if (FolderPathStorage.stashOrDiscard == 2)
+            {
+                command = "clean";
+            }
+
+            // reverse order from the upload_click
+            FolderPathStorage.stemsDestinationPath = $"{FolderPathStorage.ProjectFolderPath}/stemStorage";
+            String stemsSource = FolderPathStorage.stemsDestinationPath;
+            String stemDest = FolderPathStorage.stemsSourcePath;
+            pull();
+            CopyStems(FolderPathStorage.stemsDestinationPath, FolderPathStorage.stemsSourcePath); // copy stems to the source folder
+        }
 
         /******************************************************************************************************************************/
         // launch_project_click(): Button to launch FL project
         private void launch_project_click(object sender, EventArgs e)
-       {
-           if (FolderPathStorage.projectName == null)
-           {
-               MessageBox.Show("Please the project from the list");
-               return;
-           }
+        {
+            if (FolderPathStorage.projectName == null)
+            {
+                MessageBox.Show("Please the project from the list");
+                return;
+            }
 
-           ProcessStartInfo processStartInfo = new ProcessStartInfo
-           {
-               FileName = "cmd.exe",
-               Arguments = $"/c cd \"{FolderPathStorage.ProjectFolderPath}\" && start {FolderPathStorage.projectName}",
-               RedirectStandardOutput = true,
-               RedirectStandardError = true,
-               UseShellExecute = false,
-               CreateNoWindow = true,
-           };
+            ProcessStartInfo processStartInfo = new ProcessStartInfo
+            {
+                FileName = "cmd.exe",
+                Arguments = $"/c cd \"{FolderPathStorage.ProjectFolderPath}\" && start {FolderPathStorage.projectName}",
+                RedirectStandardOutput = true,
+                RedirectStandardError = true,
+                UseShellExecute = false,
+                CreateNoWindow = true,
+            };
 
-           using (Process process = new Process())
-           {
-               process.StartInfo = processStartInfo;
-               process.Start();
+            using (Process process = new Process())
+            {
+                process.StartInfo = processStartInfo;
+                process.Start();
 
-               //Read output
+                //Read output
 
-               String output = process.StandardOutput.ReadToEnd();
-               String error = process.StandardError.ReadToEnd();
+                String output = process.StandardOutput.ReadToEnd();
+                String error = process.StandardError.ReadToEnd();
 
-               process.WaitForExit();
+                process.WaitForExit();
 
-               // if the git command worked then display success message
-               if (process.ExitCode == 0)
-               {
-                   return;
+                // if the git command worked then display success message
+                if (process.ExitCode == 0)
+                {
+                    return;
 
-               }
-               // displays error message
-               else
-               {
-                   MessageBox.Show($"Launch failed for {FolderPathStorage.projectName} in folder {FolderPathStorage.ProjectFolderPath} {error}");
-                   return;
-               }
-           }
-       }
+                }
+                // displays error message
+                else
+                {
+                    MessageBox.Show($"Launch failed for {FolderPathStorage.projectName} in folder {FolderPathStorage.ProjectFolderPath} {error}");
+                    return;
+                }
+            }
+        }
 
         /******************************************************************************************************************************/
         // stash_changes_click(): Radio button to STASH changes
         private void stash_changes_click(object sender, EventArgs e)
-       {
-           FolderPathStorage.stashOrDiscard = 1;
-       }
+        {
+            FolderPathStorage.stashOrDiscard = 1;
+        }
 
         /******************************************************************************************************************************/
         // stow_reapply_click(): Radio button to STOW/REAPPLY changes
         private void stow_reapply_click(object sender, EventArgs e)
-       {
-           FolderPathStorage.stashOrDiscard = 2;
-       }
+        {
+            FolderPathStorage.stashOrDiscard = 2;
+        }
 
         /******************************************************************************************************************************
          * GIT FUNCTIONS
@@ -285,7 +276,8 @@ namespace WinFormsApp1
 
         /******************************************************************************************************************************/
         // pull(): Git pull
-        private void pull() {
+        private void pull()
+        {
             ProcessStartInfo processStartInfo = new ProcessStartInfo
             {
                 FileName = "cmd.exe",
@@ -522,6 +514,34 @@ namespace WinFormsApp1
                 MessageBox.Show($"Stem transfer failed: {ex.Message}");
             }
 
+        }
+
+        // summarize_changes(): Adds and commits
+        private void summarize_changes(object sender, EventArgs e)
+        {
+            if (FolderPathStorage.commitMessage == null || FolderPathStorage.commitMessage.Length == 0)
+            {
+                using (inputCommitDialog inputCommitDialog = new inputCommitDialog())
+                {
+                    if (inputCommitDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        string commitString = FolderPathStorage.commitMessage;
+                        MessageBox.Show(commitString);
+                        add();
+                        commit();
+                    }
+
+                    else
+                    {
+                        return;
+                    }
+                }
+            }
+
+            else
+            {
+                MessageBox.Show("Summary already created !");
+            }
         }
     }
     /******************************************************************************************************************************/

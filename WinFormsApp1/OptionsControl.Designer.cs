@@ -40,6 +40,7 @@
             radioButton1 = new RadioButton();
             radioButton2 = new RadioButton();
             launchProject = new Button();
+            prepareCommit = new Button();
             changesRadioBox.SuspendLayout();
             SuspendLayout();
             // 
@@ -47,10 +48,11 @@
             // 
             UploadClick.BackColor = Color.FromArgb(255, 205, 41);
             UploadClick.Cursor = Cursors.Hand;
-            UploadClick.Font = new Font("Unispace", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            UploadClick.Location = new Point(29, 132);
+            UploadClick.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            UploadClick.Location = new Point(35, 273);
+            UploadClick.Margin = new Padding(3, 4, 3, 4);
             UploadClick.Name = "UploadClick";
-            UploadClick.Size = new Size(119, 39);
+            UploadClick.Size = new Size(136, 56);
             UploadClick.TabIndex = 0;
             UploadClick.Text = "Upload";
             UploadClick.UseVisualStyleBackColor = false;
@@ -60,10 +62,11 @@
             // 
             loadChanges.BackColor = Color.FromArgb(255, 205, 41);
             loadChanges.Cursor = Cursors.Hand;
-            loadChanges.Font = new Font("Unispace", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            loadChanges.Location = new Point(29, 242);
+            loadChanges.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            loadChanges.Location = new Point(35, 404);
+            loadChanges.Margin = new Padding(3, 4, 3, 4);
             loadChanges.Name = "loadChanges";
-            loadChanges.Size = new Size(119, 45);
+            loadChanges.Size = new Size(136, 60);
             loadChanges.TabIndex = 1;
             loadChanges.Text = "Download Changes";
             loadChanges.UseVisualStyleBackColor = false;
@@ -73,10 +76,11 @@
             // 
             button3.BackColor = Color.FromArgb(255, 205, 41);
             button3.Cursor = Cursors.Hand;
-            button3.Font = new Font("Unispace", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button3.Location = new Point(29, 361);
+            button3.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button3.Location = new Point(35, 552);
+            button3.Margin = new Padding(3, 4, 3, 4);
             button3.Name = "button3";
-            button3.Size = new Size(119, 42);
+            button3.Size = new Size(136, 56);
             button3.TabIndex = 2;
             button3.Text = "Revert state";
             button3.UseVisualStyleBackColor = false;
@@ -86,9 +90,9 @@
             projectName.AutoSize = true;
             projectName.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             projectName.ForeColor = Color.FromArgb(255, 205, 41);
-            projectName.Location = new Point(399, 71);
+            projectName.Location = new Point(456, 95);
             projectName.Name = "projectName";
-            projectName.Size = new Size(81, 13);
+            projectName.Size = new Size(103, 17);
             projectName.TabIndex = 3;
             projectName.Text = "Project name";
             // 
@@ -98,9 +102,10 @@
             projectList.Columns.AddRange(new ColumnHeader[] { fileCol });
             projectList.Cursor = Cursors.Hand;
             projectList.ForeColor = Color.FromArgb(255, 205, 41);
-            projectList.Location = new Point(399, 88);
+            projectList.Location = new Point(456, 117);
+            projectList.Margin = new Padding(3, 4, 3, 4);
             projectList.Name = "projectList";
-            projectList.Size = new Size(180, 334);
+            projectList.Size = new Size(205, 444);
             projectList.TabIndex = 4;
             projectList.UseCompatibleStateImageBehavior = false;
             projectList.View = View.Details;
@@ -117,9 +122,10 @@
             button1.BackgroundImageLayout = ImageLayout.Stretch;
             button1.FlatStyle = FlatStyle.Flat;
             button1.ForeColor = Color.FromArgb(83, 19, 122);
-            button1.Location = new Point(3, 3);
+            button1.Location = new Point(3, 4);
+            button1.Margin = new Padding(3, 4, 3, 4);
             button1.Name = "button1";
-            button1.Size = new Size(49, 50);
+            button1.Size = new Size(64, 67);
             button1.TabIndex = 5;
             button1.UseVisualStyleBackColor = true;
             button1.Click += back_menu_click;
@@ -130,9 +136,11 @@
             changesRadioBox.Controls.Add(radioButton2);
             changesRadioBox.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             changesRadioBox.ForeColor = Color.FromArgb(255, 205, 41);
-            changesRadioBox.Location = new Point(397, 428);
+            changesRadioBox.Location = new Point(445, 569);
+            changesRadioBox.Margin = new Padding(3, 4, 3, 4);
             changesRadioBox.Name = "changesRadioBox";
-            changesRadioBox.Size = new Size(200, 100);
+            changesRadioBox.Padding = new Padding(3, 4, 3, 4);
+            changesRadioBox.Size = new Size(229, 133);
             changesRadioBox.TabIndex = 8;
             changesRadioBox.TabStop = false;
             changesRadioBox.Text = "Local change options";
@@ -142,9 +150,10 @@
             radioButton1.AutoSize = true;
             radioButton1.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             radioButton1.ForeColor = Color.FromArgb(255, 205, 41);
-            radioButton1.Location = new Point(14, 54);
+            radioButton1.Location = new Point(16, 72);
+            radioButton1.Margin = new Padding(3, 4, 3, 4);
             radioButton1.Name = "radioButton1";
-            radioButton1.Size = new Size(140, 19);
+            radioButton1.Size = new Size(164, 22);
             radioButton1.TabIndex = 9;
             radioButton1.TabStop = true;
             radioButton1.Text = "Stow and Reapply";
@@ -156,9 +165,10 @@
             radioButton2.AutoSize = true;
             radioButton2.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             radioButton2.ForeColor = Color.FromArgb(255, 205, 41);
-            radioButton2.Location = new Point(14, 29);
+            radioButton2.Location = new Point(16, 39);
+            radioButton2.Margin = new Padding(3, 4, 3, 4);
             radioButton2.Name = "radioButton2";
-            radioButton2.Size = new Size(167, 19);
+            radioButton2.Size = new Size(196, 22);
             radioButton2.TabIndex = 8;
             radioButton2.TabStop = true;
             radioButton2.Text = "Discard local changes";
@@ -169,20 +179,36 @@
             // 
             launchProject.BackColor = Color.FromArgb(255, 205, 41);
             launchProject.Cursor = Cursors.Hand;
-            launchProject.Font = new Font("Unispace", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            launchProject.Location = new Point(212, 558);
+            launchProject.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            launchProject.Location = new Point(242, 744);
+            launchProject.Margin = new Padding(3, 4, 3, 4);
             launchProject.Name = "launchProject";
-            launchProject.Size = new Size(166, 28);
+            launchProject.Size = new Size(190, 37);
             launchProject.TabIndex = 9;
             launchProject.Text = "Launch Project";
             launchProject.UseVisualStyleBackColor = false;
             launchProject.Click += launch_project_click;
             // 
+            // prepareCommit
+            // 
+            prepareCommit.BackColor = Color.FromArgb(255, 205, 41);
+            prepareCommit.Cursor = Cursors.Hand;
+            prepareCommit.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            prepareCommit.Location = new Point(35, 133);
+            prepareCommit.Margin = new Padding(3, 4, 3, 4);
+            prepareCommit.Name = "prepareCommit";
+            prepareCommit.Size = new Size(136, 58);
+            prepareCommit.TabIndex = 10;
+            prepareCommit.Text = "Summarize changes";
+            prepareCommit.UseVisualStyleBackColor = false;
+            prepareCommit.Click += summarize_changes;
+            // 
             // OptionsControl
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(83, 19, 122);
+            Controls.Add(prepareCommit);
             Controls.Add(launchProject);
             Controls.Add(changesRadioBox);
             Controls.Add(button1);
@@ -191,8 +217,9 @@
             Controls.Add(button3);
             Controls.Add(loadChanges);
             Controls.Add(UploadClick);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "OptionsControl";
-            Size = new Size(600, 650);
+            Size = new Size(686, 867);
             changesRadioBox.ResumeLayout(false);
             changesRadioBox.PerformLayout();
             ResumeLayout(false);
@@ -213,5 +240,6 @@
         private RadioButton radioButton1;
         private RadioButton radioButton2;
         private Button launchProject;
+        private Button prepareCommit;
     }
 }

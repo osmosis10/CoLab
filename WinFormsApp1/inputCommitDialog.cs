@@ -33,8 +33,8 @@ namespace WinFormsApp1
             this.Close();
         }
 
-        // commit_key_click(): same behaviour as clicking back button
-        private void commit_key_click(object sender, KeyEventArgs e)
+        // commit_keydown(): same behaviour's as confirm/cancel button's
+        private void commit_keydown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape)
             {
@@ -48,6 +48,13 @@ namespace WinFormsApp1
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
+        }
+
+        private void sign_in_load(object sender, EventArgs e)
+        {
+            IntPtr ptr = NativeMethods.CreateRoundRectRgn(5, 5, this.Width, this.Height, 20, 20);
+            this.Region = System.Drawing.Region.FromHrgn(ptr);
+            NativeMethods.DeleteObject(ptr);
         }
     }
 }
