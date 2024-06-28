@@ -23,65 +23,10 @@ namespace WinFormsApp1
         private void create_button(object sender, EventArgs e)
         {
             showModal();
-            /*
-            String repoName = "my-repo";
-            string localPath = @"C:\path\to\directory";
-
-            // Create GitHub repository
-            bool repoCreated = await CreateGitHubRepository(repoName);
-            if (!repoCreated)
-            {
-                MessageBox.Show("Failed to create GitHub repository");
-                return;
-            }
-
-            // Create directory
-            Directory.CreateDirectory(localPath);
-
-            // Initialize git repository
-            RunCommand("git", "init", localPath);
-
-            // Add remote origin
-            string remoteUrl = $"https://github.com/{GitHubUsername}/{repoName}.git";
-            RunCommand("git", $"remote add origin {remoteUrl}", localPath);
-
-            // Create a README.md file
-            File.WriteAllText(Path.Combine(localPath, "README.md"), "# " + repoName);
-
-            // Add files to staging area
-            RunCommand("git", "add .", localPath);
-
-            // Commit files
-            RunCommand("git", "commit -m \"Initial commit\"", localPath);
-
-            // Push to GitHub
-            RunCommand("git", "push -u origin master", localPath);
-            */
+            
             
         }
-        /*
-        private async Task<bool> CreateGitHubRepository(string repoName)
-        {
-            using (var client = new HttpClient())
-            {
-                client.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue("AppName", "1.0"));
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Token", GitHubToken);
-
-                var repository = new
-                {
-                    name = repoName,
-                    description = "This is your repository description",
-                    @private = false
-                };
-
-                var content = new StringContent(JsonConvert.SerializeObject(repository), Encoding.UTF8, "application/json");
-
-                HttpResponseMessage response = await client.PostAsync(GitHubApiUrl, content);
-
-                return response.IsSuccessStatusCode;
-            }
-        }
-        */
+        
         /******************************************************************************************************************************/
         // project_click(): Upon selecting valid project folder, takes user to Version controller options
         private void project_click(object sender, EventArgs e)
@@ -205,10 +150,6 @@ namespace WinFormsApp1
             }
         }
 
-        private void test_git_creds(String email, String password)
-        {
-
-        }
 
        
     }

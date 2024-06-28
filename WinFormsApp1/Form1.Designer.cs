@@ -84,9 +84,11 @@
             Controls.Add(button2);
             Controls.Add(existing_click);
             Controls.Add(CreateButton);
+            MaximumSize = new Size(600, 650);
+            MinimumSize = new Size(600, 650);
             Name = "Form1";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Form1";
+            Text = "Co-Lab";
             ResumeLayout(false);
         }
 

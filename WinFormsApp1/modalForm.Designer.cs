@@ -34,11 +34,10 @@
             modalEffect_Timer = new System.Windows.Forms.Timer(components);
             accessToken = new PictureBox();
             backClick = new Label();
-            emailBox = new TextBox();
-            passwordBox = new TextBox();
+            usernameBox = new TextBox();
             user_panel = new Panel();
-            panel1 = new Panel();
             newFolder = new PictureBox();
+            confirmButton = new Button();
             ((System.ComponentModel.ISupportInitialize)accessToken).BeginInit();
             ((System.ComponentModel.ISupportInitialize)newFolder).BeginInit();
             SuspendLayout();
@@ -48,9 +47,9 @@
             requiredInfo.AutoSize = true;
             requiredInfo.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             requiredInfo.ForeColor = SystemColors.ButtonHighlight;
-            requiredInfo.Location = new Point(157, 9);
+            requiredInfo.Location = new Point(137, 7);
             requiredInfo.Name = "requiredInfo";
-            requiredInfo.Size = new Size(146, 29);
+            requiredInfo.Size = new Size(115, 24);
             requiredInfo.TabIndex = 0;
             requiredInfo.Text = "REQUIRED";
             // 
@@ -61,10 +60,9 @@
             // accessToken
             // 
             accessToken.Image = Properties.Resources.github;
-            accessToken.Location = new Point(306, 205);
-            accessToken.Margin = new Padding(3, 4, 3, 4);
+            accessToken.Location = new Point(267, 141);
             accessToken.Name = "accessToken";
-            accessToken.Size = new Size(58, 53);
+            accessToken.Size = new Size(51, 40);
             accessToken.SizeMode = PictureBoxSizeMode.Zoom;
             accessToken.TabIndex = 2;
             accessToken.TabStop = false;
@@ -75,94 +73,81 @@
             backClick.AutoSize = true;
             backClick.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             backClick.ForeColor = Color.FromArgb(255, 205, 41);
-            backClick.Location = new Point(12, 289);
+            backClick.Location = new Point(10, 217);
             backClick.Name = "backClick";
-            backClick.Padding = new Padding(6, 7, 6, 7);
-            backClick.Size = new Size(56, 32);
+            backClick.Padding = new Padding(5);
+            backClick.Size = new Size(47, 25);
             backClick.TabIndex = 3;
             backClick.Text = "back";
             backClick.Click += back_click;
             backClick.MouseLeave += mouseLeave;
             backClick.MouseHover += mouse_hover;
             // 
-            // emailBox
+            // usernameBox
             // 
-            emailBox.BackColor = Color.Indigo;
-            emailBox.BorderStyle = BorderStyle.None;
-            emailBox.ForeColor = Color.FromArgb(255, 205, 41);
-            emailBox.Location = new Point(85, 71);
-            emailBox.Margin = new Padding(3, 4, 3, 4);
-            emailBox.Name = "emailBox";
-            emailBox.PlaceholderText = "Enter your email";
-            emailBox.Size = new Size(279, 20);
-            emailBox.TabIndex = 4;
-            emailBox.TextChanged += email_field_change;
-            emailBox.Enter += enter_email;
-            // 
-            // passwordBox
-            // 
-            passwordBox.BackColor = Color.Indigo;
-            passwordBox.BorderStyle = BorderStyle.None;
-            passwordBox.ForeColor = Color.FromArgb(255, 205, 41);
-            passwordBox.Location = new Point(85, 137);
-            passwordBox.Margin = new Padding(3, 4, 3, 4);
-            passwordBox.Name = "passwordBox";
-            passwordBox.PlaceholderText = "Enter Password";
-            passwordBox.Size = new Size(279, 20);
-            passwordBox.TabIndex = 5;
-            passwordBox.UseSystemPasswordChar = true;
-            passwordBox.TextChanged += password_field_change;
+            usernameBox.BackColor = Color.Indigo;
+            usernameBox.BorderStyle = BorderStyle.None;
+            usernameBox.ForeColor = Color.FromArgb(255, 205, 41);
+            usernameBox.Location = new Point(74, 43);
+            usernameBox.Name = "usernameBox";
+            usernameBox.PlaceholderText = "Enter your username";
+            usernameBox.Size = new Size(244, 16);
+            usernameBox.TabIndex = 4;
+            usernameBox.TextChanged += username_field_change;
+            usernameBox.Enter += enter_username;
             // 
             // user_panel
             // 
             user_panel.BackColor = Color.White;
             user_panel.ForeColor = Color.FromArgb(255, 205, 41);
-            user_panel.Location = new Point(85, 100);
-            user_panel.Margin = new Padding(3, 4, 3, 4);
+            user_panel.Location = new Point(74, 65);
             user_panel.Name = "user_panel";
-            user_panel.Size = new Size(279, 5);
+            user_panel.Size = new Size(244, 4);
             user_panel.TabIndex = 6;
-            // 
-            // panel1
-            // 
-            panel1.BackColor = Color.White;
-            panel1.ForeColor = Color.FromArgb(255, 205, 41);
-            panel1.Location = new Point(85, 167);
-            panel1.Margin = new Padding(3, 4, 3, 4);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(279, 5);
-            panel1.TabIndex = 7;
             // 
             // newFolder
             // 
             newFolder.BackgroundImageLayout = ImageLayout.Stretch;
             newFolder.Image = (Image)resources.GetObject("newFolder.Image");
-            newFolder.Location = new Point(85, 205);
+            newFolder.Location = new Point(74, 141);
+            newFolder.Margin = new Padding(3, 2, 3, 2);
             newFolder.Name = "newFolder";
-            newFolder.Size = new Size(50, 54);
+            newFolder.Size = new Size(44, 40);
             newFolder.SizeMode = PictureBoxSizeMode.Zoom;
             newFolder.TabIndex = 8;
             newFolder.TabStop = false;
             newFolder.Click += new_project_click;
             // 
+            // confirmButton
+            // 
+            confirmButton.BackColor = Color.FromArgb(255, 205, 41);
+            confirmButton.Cursor = Cursors.Hand;
+            confirmButton.FlatStyle = FlatStyle.Flat;
+            confirmButton.Font = new Font("Unispace", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            confirmButton.Location = new Point(163, 200);
+            confirmButton.Name = "confirmButton";
+            confirmButton.Size = new Size(67, 25);
+            confirmButton.TabIndex = 9;
+            confirmButton.Text = "Confirm";
+            confirmButton.UseVisualStyleBackColor = false;
+            confirmButton.Click += confirm_click;
+            // 
             // modalForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Indigo;
-            ClientSize = new Size(462, 330);
+            ClientSize = new Size(404, 248);
+            Controls.Add(confirmButton);
             Controls.Add(newFolder);
-            Controls.Add(panel1);
             Controls.Add(user_panel);
-            Controls.Add(passwordBox);
-            Controls.Add(emailBox);
+            Controls.Add(usernameBox);
             Controls.Add(backClick);
             Controls.Add(accessToken);
             Controls.Add(requiredInfo);
             Cursor = Cursors.Hand;
             FormBorderStyle = FormBorderStyle.None;
             KeyPreview = true;
-            Margin = new Padding(3, 4, 3, 4);
             Name = "modalForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "modalForm";
@@ -180,10 +165,9 @@
         private System.Windows.Forms.Timer modalEffect_Timer;
         private PictureBox accessToken;
         private Label backClick;
-        private TextBox emailBox;
-        private TextBox passwordBox;
+        private TextBox usernameBox;
         private Panel user_panel;
-        private Panel panel1;
         private PictureBox newFolder;
+        private Button confirmButton;
     }
 }
