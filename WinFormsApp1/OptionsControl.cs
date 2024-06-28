@@ -541,6 +541,7 @@ namespace WinFormsApp1
             else
             {
                 MessageBox.Show("Summary already created !");
+                return;
             }
         }
     }

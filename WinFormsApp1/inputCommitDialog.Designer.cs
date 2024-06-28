@@ -78,7 +78,7 @@
             commit_back.Name = "commit_back";
             commit_back.Size = new Size(86, 31);
             commit_back.TabIndex = 3;
-            commit_back.Text = "cancel";
+            commit_back.Text = "Cancel";
             commit_back.UseVisualStyleBackColor = false;
             commit_back.Click += commit_back_click;
             // 

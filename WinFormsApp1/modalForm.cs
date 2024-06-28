@@ -102,13 +102,13 @@ namespace WinFormsApp1
         // mouse_hover(): Set's underline when user hovers over 'back' label
         private void mouse_hover(object sender, EventArgs e)
         {
-            backClick.Font = new Font(backClick.Font, FontStyle.Underline);
+            backClick.Font = new Font(backClick.Font, FontStyle.Underline | FontStyle.Bold); // bitwise OR operator to obtain both bold and underline
         }
 
         // mouseLeave(): Removes underline when user stops hovering over 'back' label
         private void mouseLeave(object sender, EventArgs e)
         {
-            backClick.Font = new Font(backClick.Font, FontStyle.Regular);
+            backClick.Font = new Font(backClick.Font, FontStyle.Bold);
         }
 
         // modal_key_down(): handlers for key presses in modal
@@ -151,7 +151,41 @@ namespace WinFormsApp1
             int i = 0;
         }
 
+        // to be modified for access token file type
+        private void access_token_click(object sender, EventArgs e)
+        {
+            // Create a new instance of the OpenFileDialog
+            OpenFileDialog openFileDialog = new OpenFileDialog();
 
+            // Set the filter to show only text files
+            openFileDialog.Filter = "Text Files (*.txt)|*.txt";
+
+            // Optionally, you can set the title of the dialog
+            openFileDialog.Title = "Select a Text File";
+
+            // Show the dialog and get the result
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                // Get the selected file path
+                string selectedFilePath = openFileDialog.FileName;
+                // Do something with the selected file
+            }
+    }
+
+        private void new_project_click(object sender, EventArgs e)
+        {
+            using (FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog())
+            {
+                folderBrowserDialog.SelectedPath = "C:\\"; // default at C drive
+                folderBrowserDialog.Description = "Choose location for repo"; // title
+
+                if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
+                {
+                    FolderPathStorage.ProjectFolderPath = folderBrowserDialog.SelectedPath;
+                }
+
+            }
+        }
     }
 
     // class to make round corners for modal form

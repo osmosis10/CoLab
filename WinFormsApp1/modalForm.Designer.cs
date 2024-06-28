@@ -29,49 +29,53 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            sign_in_title = new Label();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(modalForm));
+            requiredInfo = new Label();
             modalEffect_Timer = new System.Windows.Forms.Timer(components);
-            pictureBox1 = new PictureBox();
+            accessToken = new PictureBox();
             backClick = new Label();
             emailBox = new TextBox();
             passwordBox = new TextBox();
             user_panel = new Panel();
             panel1 = new Panel();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            newFolder = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)accessToken).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)newFolder).BeginInit();
             SuspendLayout();
             // 
-            // sign_in_title
+            // requiredInfo
             // 
-            sign_in_title.AutoSize = true;
-            sign_in_title.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            sign_in_title.ForeColor = SystemColors.ButtonHighlight;
-            sign_in_title.Location = new Point(177, 12);
-            sign_in_title.Name = "sign_in_title";
-            sign_in_title.Size = new Size(108, 29);
-            sign_in_title.TabIndex = 0;
-            sign_in_title.Text = "SIGN IN";
+            requiredInfo.AutoSize = true;
+            requiredInfo.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            requiredInfo.ForeColor = SystemColors.ButtonHighlight;
+            requiredInfo.Location = new Point(157, 9);
+            requiredInfo.Name = "requiredInfo";
+            requiredInfo.Size = new Size(146, 29);
+            requiredInfo.TabIndex = 0;
+            requiredInfo.Text = "REQUIRED";
             // 
             // modalEffect_Timer
             // 
             modalEffect_Timer.Tick += modalEffect_Timer_Tick;
             // 
-            // pictureBox1
+            // accessToken
             // 
-            pictureBox1.Image = Properties.Resources.github;
-            pictureBox1.Location = new Point(393, 16);
-            pictureBox1.Margin = new Padding(3, 4, 3, 4);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(55, 47);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 2;
-            pictureBox1.TabStop = false;
+            accessToken.Image = Properties.Resources.github;
+            accessToken.Location = new Point(306, 205);
+            accessToken.Margin = new Padding(3, 4, 3, 4);
+            accessToken.Name = "accessToken";
+            accessToken.Size = new Size(58, 53);
+            accessToken.SizeMode = PictureBoxSizeMode.Zoom;
+            accessToken.TabIndex = 2;
+            accessToken.TabStop = false;
+            accessToken.Click += access_token_click;
             // 
             // backClick
             // 
             backClick.AutoSize = true;
             backClick.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             backClick.ForeColor = Color.FromArgb(255, 205, 41);
-            backClick.Location = new Point(14, 200);
+            backClick.Location = new Point(12, 289);
             backClick.Name = "backClick";
             backClick.Padding = new Padding(6, 7, 6, 7);
             backClick.Size = new Size(56, 32);
@@ -129,19 +133,32 @@
             panel1.Size = new Size(279, 5);
             panel1.TabIndex = 7;
             // 
+            // newFolder
+            // 
+            newFolder.BackgroundImageLayout = ImageLayout.Stretch;
+            newFolder.Image = (Image)resources.GetObject("newFolder.Image");
+            newFolder.Location = new Point(85, 205);
+            newFolder.Name = "newFolder";
+            newFolder.Size = new Size(50, 54);
+            newFolder.SizeMode = PictureBoxSizeMode.Zoom;
+            newFolder.TabIndex = 8;
+            newFolder.TabStop = false;
+            newFolder.Click += new_project_click;
+            // 
             // modalForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Indigo;
-            ClientSize = new Size(462, 231);
+            ClientSize = new Size(462, 330);
+            Controls.Add(newFolder);
             Controls.Add(panel1);
             Controls.Add(user_panel);
             Controls.Add(passwordBox);
             Controls.Add(emailBox);
             Controls.Add(backClick);
-            Controls.Add(pictureBox1);
-            Controls.Add(sign_in_title);
+            Controls.Add(accessToken);
+            Controls.Add(requiredInfo);
             Cursor = Cursors.Hand;
             FormBorderStyle = FormBorderStyle.None;
             KeyPreview = true;
@@ -151,20 +168,22 @@
             Text = "modalForm";
             Load += modalForm_Load;
             KeyDown += modal_key_down;
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)accessToken).EndInit();
+            ((System.ComponentModel.ISupportInitialize)newFolder).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private Label sign_in_title;
+        private Label requiredInfo;
         private System.Windows.Forms.Timer modalEffect_Timer;
-        private PictureBox pictureBox1;
+        private PictureBox accessToken;
         private Label backClick;
         private TextBox emailBox;
         private TextBox passwordBox;
         private Panel user_panel;
         private Panel panel1;
+        private PictureBox newFolder;
     }
 }

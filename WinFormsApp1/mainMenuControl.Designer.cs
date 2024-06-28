@@ -36,6 +36,7 @@
             // button2
             // 
             button2.BackColor = Color.FromArgb(255, 205, 41);
+            button2.Cursor = Cursors.Hand;
             button2.FlatStyle = FlatStyle.Flat;
             button2.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button2.Location = new Point(226, 416);
@@ -50,6 +51,7 @@
             // existing_click
             // 
             existing_click.BackColor = Color.FromArgb(255, 205, 41);
+            existing_click.Cursor = Cursors.Hand;
             existing_click.FlatStyle = FlatStyle.Flat;
             existing_click.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             existing_click.Location = new Point(226, 293);
@@ -64,6 +66,7 @@
             // createProject
             // 
             createProject.BackColor = Color.FromArgb(255, 205, 41);
+            createProject.Cursor = Cursors.Hand;
             createProject.FlatStyle = FlatStyle.Flat;
             createProject.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             createProject.Location = new Point(226, 159);

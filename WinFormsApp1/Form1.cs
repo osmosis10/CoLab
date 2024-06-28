@@ -1,4 +1,7 @@
+using Newtonsoft.Json;
 using System.Diagnostics;
+using System.Net.Http.Headers;
+using System.Text;
 
 namespace WinFormsApp1
 {
@@ -19,53 +22,66 @@ namespace WinFormsApp1
         // create_button(): Launches credential modal to be used for creating new project folder
         private void create_button(object sender, EventArgs e)
         {
-            Form modalBack = new Form();
-            using (modalForm modal = new modalForm())
+            showModal();
+            /*
+            String repoName = "my-repo";
+            string localPath = @"C:\path\to\directory";
+
+            // Create GitHub repository
+            bool repoCreated = await CreateGitHubRepository(repoName);
+            if (!repoCreated)
             {
-                modalBack.StartPosition = FormStartPosition.Manual;
-                modalBack.FormBorderStyle = FormBorderStyle.None;
-                modalBack.Opacity = .50d;
-                modalBack.BackColor = Color.Black;
-                modalBack.Size = this.Size;
-                modalBack.Location = this.Location;
-                modalBack.ShowInTaskbar = false;
-                modalBack.Show();
-                modal.Owner = modalBack;
+                MessageBox.Show("Failed to create GitHub repository");
+                return;
+            }
 
-                parentX = this.Location.X;
-                parentY = this.Location.Y;
+            // Create directory
+            Directory.CreateDirectory(localPath);
 
-                // Set the initial position of the modal off-screen 
-                modal.StartPosition = FormStartPosition.Manual;
-                modal.Top = this.Top - modal.Height + 150; // Start above the main form
-                modal.Left = this.Left + (this.Width - modal.Width) / 2;
+            // Initialize git repository
+            RunCommand("git", "init", localPath);
 
-                // Show the modal before starting the animation
-                modal.Shown += (s, args) =>
+            // Add remote origin
+            string remoteUrl = $"https://github.com/{GitHubUsername}/{repoName}.git";
+            RunCommand("git", $"remote add origin {remoteUrl}", localPath);
+
+            // Create a README.md file
+            File.WriteAllText(Path.Combine(localPath, "README.md"), "# " + repoName);
+
+            // Add files to staging area
+            RunCommand("git", "add .", localPath);
+
+            // Commit files
+            RunCommand("git", "commit -m \"Initial commit\"", localPath);
+
+            // Push to GitHub
+            RunCommand("git", "push -u origin master", localPath);
+            */
+            
+        }
+        /*
+        private async Task<bool> CreateGitHubRepository(string repoName)
+        {
+            using (var client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue("AppName", "1.0"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Token", GitHubToken);
+
+                var repository = new
                 {
-                    System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
-                    timer.Interval = 10; // Set time animation
-                    timer.Tick += (s2, args2) =>
-                    {
-                        if (modal.Top < this.Top + 100)
-                        {
-                            modal.Top += 8; // Move the modal down
-                        }
-                        else
-                        {
-                            timer.Stop();
-                        }
-                    };
-                    timer.Start();
+                    name = repoName,
+                    description = "This is your repository description",
+                    @private = false
                 };
 
+                var content = new StringContent(JsonConvert.SerializeObject(repository), Encoding.UTF8, "application/json");
 
+                HttpResponseMessage response = await client.PostAsync(GitHubApiUrl, content);
 
-                modal.ShowDialog();
-                modalBack.Dispose();
+                return response.IsSuccessStatusCode;
             }
         }
-
+        */
         /******************************************************************************************************************************/
         // project_click(): Upon selecting valid project folder, takes user to Version controller options
         private void project_click(object sender, EventArgs e)
@@ -137,6 +153,55 @@ namespace WinFormsApp1
                 {
                     MessageBox.Show($"Error: {folderPath} is not a valid repo");
                 }
+            }
+        }
+        
+        private void showModal()
+        {
+            Form modalBack = new Form();
+            using (modalForm modal = new modalForm())
+            {
+                modalBack.StartPosition = FormStartPosition.Manual;
+                modalBack.FormBorderStyle = FormBorderStyle.None;
+                modalBack.Opacity = .50d;
+                modalBack.BackColor = Color.Black;
+                modalBack.Size = this.Size;
+                modalBack.Location = this.Location;
+                modalBack.ShowInTaskbar = false;
+                modalBack.Show();
+                modal.Owner = modalBack;
+
+                parentX = this.Location.X;
+                parentY = this.Location.Y;
+
+                // Set the initial position of the modal off-screen 
+                modal.StartPosition = FormStartPosition.Manual;
+                modal.Top = this.Top - modal.Height + 150; // Start above the main form
+                modal.Left = this.Left + (this.Width - modal.Width) / 2;
+
+                // Show the modal before starting the animation
+                modal.Shown += (s, args) =>
+                {
+                    System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
+                    timer.Interval = 10; // Set time animation
+                    timer.Tick += (s2, args2) =>
+                    {
+                        if (modal.Top < this.Top + 100)
+                        {
+                            modal.Top += 8; // Move the modal down
+                        }
+                        else
+                        {
+                            timer.Stop();
+                        }
+                    };
+                    timer.Start();
+                };
+
+
+
+                modal.ShowDialog();
+                modalBack.Dispose();
             }
         }
 
