@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             CreateButton = new Button();
             existing_click = new Button();
             button2 = new Button();
@@ -100,6 +101,7 @@
             Controls.Add(button2);
             Controls.Add(existing_click);
             Controls.Add(CreateButton);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(3, 4, 3, 4);
             MaximumSize = new Size(683, 851);
             MinimumSize = new Size(683, 851);
