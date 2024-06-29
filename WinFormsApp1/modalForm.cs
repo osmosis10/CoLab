@@ -92,6 +92,20 @@ namespace WinFormsApp1
             }
         }
 
+        private void access_token_box_change(object sender, EventArgs e)
+        {
+            if (enterToken.Text.Length == 0)
+            {
+                FolderPathStorage.token = null;
+            }
+
+            else
+            {
+                FolderPathStorage.token = enterToken.Text;
+            }
+
+        }
+
 
         // mouse_hover(): Set's underline when user hovers over 'back' label
         private void mouse_hover(object sender, EventArgs e)
@@ -109,15 +123,19 @@ namespace WinFormsApp1
         private void modal_key_down(object sender, KeyEventArgs e)
         {
             // Upon enter key down launches file browser to
-            // to select where project folder will reside
+            // to select where project folder will reside (same as CONFIRM BUTTON)
             if (e.KeyCode == Keys.Enter)
             {
-                if (FolderPathStorage.username != null || FolderPathStorage.ProjectFolderPath != null || FolderPathStorage.tokenPath != null)
+                if (FolderPathStorage.username != null || FolderPathStorage.ProjectFolderPath != null || FolderPathStorage.token != null)
                 {
                     try
                     {
-                        GitHubToken = ExtractTokenFromPemFile(FolderPathStorage.tokenPath);
+                        GitHubToken = FolderPathStorage.token;
+                        MessageBox.Show($"{FolderPathStorage.username}");
                         CreateRepository();
+                        FolderPathStorage.token = null; // reset to null
+                        this.Close();
+
                     }
                     catch (Exception ex)
                     {
@@ -141,17 +159,19 @@ namespace WinFormsApp1
         private void confirm_click(object sender, EventArgs e)
         {
 
-            if (FolderPathStorage.username != null || FolderPathStorage.ProjectFolderPath != null || FolderPathStorage.tokenPath != null)
+            if (FolderPathStorage.username != null && FolderPathStorage.ProjectFolderPath != null && FolderPathStorage.token != null)
             {
                 try
                 {
-                    GitHubToken = ExtractTokenFromPemFile(FolderPathStorage.tokenPath);
+                    GitHubToken = FolderPathStorage.token;
                     MessageBox.Show($"{FolderPathStorage.username}");
                     CreateRepository();
+                    FolderPathStorage.Clear();
+                    this.Close();
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Error reading token file: {ex.Message}");
+                    MessageBox.Show($"Error: {ex.Message}");
                 }
             }
 
@@ -159,13 +179,31 @@ namespace WinFormsApp1
             {
                 MessageBox.Show("Please complete all fields");
             }
-            
         }
 
-        // (Will be used to create repo from CLI)
+        // new_project_click(): NEW project destination path
+        private void new_project_click(object sender, EventArgs e)
+        {
+            using (FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog())
+            {
+                folderBrowserDialog.SelectedPath = "C:\\"; // default at C drive
+                folderBrowserDialog.Description = "Choose location for repo"; // title
+
+                if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
+                {
+                    FolderPathStorage.ProjectFolderPath = folderBrowserDialog.SelectedPath;
+                    FolderPathStorage.newFolderName = new DirectoryInfo(folderBrowserDialog.SelectedPath).Name;
+                    folderNameLabel.Text = FolderPathStorage.newFolderName;
+                }
+
+            }
+        }
+
+
+        // CreateRepository(): Create's local repo occording to created github repo
         private async void CreateRepository()
         {
-            string repoName = "test name"; // same name as folder
+            string repoName = FolderPathStorage.newFolderName; // same name as folder
             string localPath = FolderPathStorage.ProjectFolderPath; // path to the folder
 
             // Create GitHub repository
@@ -199,6 +237,8 @@ namespace WinFormsApp1
             RunCommand("git", "push -u origin master", localPath);
         }
 
+        // CreateGitHubRepository(): Async function that creates a repo on user's account 
+        //                           provided a valid personal token 
         private async Task<bool> CreateGitHubRepository(string repoName)
         {
             using (var client = new HttpClient())
@@ -216,73 +256,19 @@ namespace WinFormsApp1
                 var content = new StringContent(JsonConvert.SerializeObject(repository), Encoding.UTF8, "application/json");
 
                 HttpResponseMessage response = await client.PostAsync(GitHubApiUrl, content);
-                
+
                 // Log the response for debugging
                 string responseContent = await response.Content.ReadAsStringAsync();
-                MessageBox.Show($"{GitHubToken}");
-                MessageBox.Show($"Response Status Code: {response.StatusCode}");
-                MessageBox.Show($"Response Content: {responseContent}");
-                
+                //MessageBox.Show($"{GitHubToken}");
+                //MessageBox.Show($"Response Status Code: {response.StatusCode}");
+                //MessageBox.Show($"Response Content: {responseContent}");
+
                 return response.IsSuccessStatusCode;
             }
         }
 
-        //  access_token_click(): Obtains github access token
-        private void access_token_click(object sender, EventArgs e)
-        {
-            // Create a new instance of the OpenFileDialog
-            OpenFileDialog openFileDialog = new OpenFileDialog();
 
-            // Set the filter to show only text files
-            openFileDialog.Filter = "Discord Token (*.pem)|*.pem";
-
-            // Optionally, you can set the title of the dialog
-            openFileDialog.Title = "Select a Text File";
-
-            // Show the dialog and get the result
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                // store path
-                FolderPathStorage.tokenPath = openFileDialog.FileName;
-            }
-        }
-
-
-
-        // new_project_click(): NEW project destination path
-        private void new_project_click(object sender, EventArgs e)
-        {
-            using (FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog())
-            {
-                folderBrowserDialog.SelectedPath = "C:\\"; // default at C drive
-                folderBrowserDialog.Description = "Choose location for repo"; // title
-
-                if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
-                {
-                    FolderPathStorage.ProjectFolderPath = folderBrowserDialog.SelectedPath;
-                    FolderPathStorage.newFolderName = new DirectoryInfo(folderBrowserDialog.SelectedPath).Name;
-                }
-
-            }
-        }
-
-
-        private string ExtractTokenFromPemFile(string filePath)
-        {
-            string[] lines = File.ReadAllLines(filePath);
-            StringBuilder tokenBuilder = new StringBuilder();
-
-            foreach (string line in lines)
-            {
-                if (!line.StartsWith("-----"))
-                {
-                    tokenBuilder.Append(line.Trim());
-                }
-            }
-
-            return tokenBuilder.ToString();
-        }
-
+        // consider adding this to folderpathstorage class or making it public
         private void RunCommand(string command, string arguments, string workingDirectory)
         {
             ProcessStartInfo processStartInfo = new ProcessStartInfo()

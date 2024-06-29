@@ -31,6 +31,7 @@
             CreateButton = new Button();
             existing_click = new Button();
             button2 = new Button();
+            mainTitle = new Label();
             SuspendLayout();
             // 
             // CreateButton
@@ -38,10 +39,11 @@
             CreateButton.BackColor = Color.FromArgb(255, 205, 41);
             CreateButton.Cursor = Cursors.Hand;
             CreateButton.FlatStyle = FlatStyle.Flat;
-            CreateButton.Font = new Font("Unispace", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            CreateButton.Location = new Point(198, 119);
+            CreateButton.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            CreateButton.Location = new Point(226, 202);
+            CreateButton.Margin = new Padding(3, 4, 3, 4);
             CreateButton.Name = "CreateButton";
-            CreateButton.Size = new Size(188, 37);
+            CreateButton.Size = new Size(215, 49);
             CreateButton.TabIndex = 0;
             CreateButton.Text = "Create";
             CreateButton.UseVisualStyleBackColor = false;
@@ -52,10 +54,11 @@
             existing_click.BackColor = Color.FromArgb(255, 205, 41);
             existing_click.Cursor = Cursors.Hand;
             existing_click.FlatStyle = FlatStyle.Flat;
-            existing_click.Font = new Font("Unispace", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            existing_click.Location = new Point(198, 220);
+            existing_click.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            existing_click.Location = new Point(226, 336);
+            existing_click.Margin = new Padding(3, 4, 3, 4);
             existing_click.Name = "existing_click";
-            existing_click.Size = new Size(188, 37);
+            existing_click.Size = new Size(215, 49);
             existing_click.TabIndex = 1;
             existing_click.Text = "Existing Project";
             existing_click.UseVisualStyleBackColor = false;
@@ -66,30 +69,45 @@
             button2.BackColor = Color.FromArgb(255, 205, 41);
             button2.Cursor = Cursors.Hand;
             button2.FlatStyle = FlatStyle.Flat;
-            button2.Font = new Font("Unispace", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button2.Location = new Point(198, 312);
+            button2.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button2.Location = new Point(226, 459);
+            button2.Margin = new Padding(3, 4, 3, 4);
             button2.Name = "button2";
-            button2.Size = new Size(188, 37);
+            button2.Size = new Size(215, 49);
             button2.TabIndex = 2;
             button2.Text = "Exit";
             button2.UseVisualStyleBackColor = false;
             button2.Click += exit_click;
             // 
+            // mainTitle
+            // 
+            mainTitle.AutoSize = true;
+            mainTitle.Font = new Font("Palatino Linotype", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            mainTitle.ForeColor = Color.FromArgb(255, 205, 41);
+            mainTitle.Location = new Point(198, 68);
+            mainTitle.Name = "mainTitle";
+            mainTitle.Size = new Size(280, 38);
+            mainTitle.TabIndex = 3;
+            mainTitle.Text = "Welcome to Co-Lab !";
+            // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(83, 19, 122);
-            ClientSize = new Size(584, 611);
+            ClientSize = new Size(665, 804);
+            Controls.Add(mainTitle);
             Controls.Add(button2);
             Controls.Add(existing_click);
             Controls.Add(CreateButton);
-            MaximumSize = new Size(600, 650);
-            MinimumSize = new Size(600, 650);
+            Margin = new Padding(3, 4, 3, 4);
+            MaximumSize = new Size(683, 851);
+            MinimumSize = new Size(683, 851);
             Name = "Form1";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Co-Lab";
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -97,5 +115,6 @@
         private Button CreateButton;
         private Button existing_click;
         private Button button2;
+        private Label mainTitle;
     }
 }
