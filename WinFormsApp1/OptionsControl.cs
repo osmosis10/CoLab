@@ -100,6 +100,8 @@ namespace WinFormsApp1
                 String stemsSource = FolderPathStorage.stemsSourcePath;
                 String stemDest = FolderPathStorage.stemsDestinationPath;
                 CopyStems(stemsSource, stemDest); // Executes copy command
+                add();
+                commit();
                 push();
             }
 
@@ -527,8 +529,7 @@ namespace WinFormsApp1
                     {
                         string commitString = FolderPathStorage.commitMessage;
                         MessageBox.Show(commitString);
-                        add();
-                        commit();
+                        
                     }
 
                     else

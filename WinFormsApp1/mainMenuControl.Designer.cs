@@ -39,9 +39,9 @@
             mainTitle.AutoSize = true;
             mainTitle.Font = new Font("Palatino Linotype", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             mainTitle.ForeColor = Color.FromArgb(255, 205, 41);
-            mainTitle.Location = new Point(198, 68);
+            mainTitle.Location = new Point(173, 51);
             mainTitle.Name = "mainTitle";
-            mainTitle.Size = new Size(280, 38);
+            mainTitle.Size = new Size(219, 29);
             mainTitle.TabIndex = 7;
             mainTitle.Text = "Welcome to Co-Lab !";
             // 
@@ -51,13 +51,13 @@
             button2.Cursor = Cursors.Hand;
             button2.FlatStyle = FlatStyle.Flat;
             button2.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button2.Location = new Point(227, 459);
-            button2.Margin = new Padding(3, 4, 3, 4);
+            button2.Location = new Point(199, 344);
             button2.Name = "button2";
-            button2.Size = new Size(215, 49);
+            button2.Size = new Size(188, 37);
             button2.TabIndex = 6;
             button2.Text = "Exit";
             button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
             // 
             // existing_click
             // 
@@ -65,13 +65,13 @@
             existing_click.Cursor = Cursors.Hand;
             existing_click.FlatStyle = FlatStyle.Flat;
             existing_click.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            existing_click.Location = new Point(227, 336);
-            existing_click.Margin = new Padding(3, 4, 3, 4);
+            existing_click.Location = new Point(199, 252);
             existing_click.Name = "existing_click";
-            existing_click.Size = new Size(215, 49);
+            existing_click.Size = new Size(188, 37);
             existing_click.TabIndex = 5;
             existing_click.Text = "Existing Project";
             existing_click.UseVisualStyleBackColor = false;
+            existing_click.Click += existing_click_Click;
             // 
             // CreateButton
             // 
@@ -79,26 +79,25 @@
             CreateButton.Cursor = Cursors.Hand;
             CreateButton.FlatStyle = FlatStyle.Flat;
             CreateButton.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            CreateButton.Location = new Point(226, 202);
-            CreateButton.Margin = new Padding(3, 4, 3, 4);
+            CreateButton.Location = new Point(198, 152);
             CreateButton.Name = "CreateButton";
-            CreateButton.Size = new Size(215, 49);
+            CreateButton.Size = new Size(188, 37);
             CreateButton.TabIndex = 4;
             CreateButton.Text = "Create";
             CreateButton.UseVisualStyleBackColor = false;
+            CreateButton.Click += CreateButton_Click;
             // 
             // mainMenuControl
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(83, 19, 122);
             Controls.Add(mainTitle);
             Controls.Add(button2);
             Controls.Add(existing_click);
             Controls.Add(CreateButton);
-            Margin = new Padding(3, 4, 3, 4);
             Name = "mainMenuControl";
-            Size = new Size(686, 867);
+            Size = new Size(600, 650);
             ResumeLayout(false);
             PerformLayout();
         }
