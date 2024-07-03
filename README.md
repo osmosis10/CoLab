@@ -12,15 +12,15 @@
 
 
 
-## Colab
+# Colab
 ---
-# CoLab GUI, designed to test an implementation of version control for DAW's (Digital Audio  
-# Interface) using *git*, like FL Studio which is what CoLab currently caters to.  
+ CoLab GUI, designed to test an implementation of version control for DAW's (Digital Audio Interface) 
+ using *git*, like FL Studio which is what CoLab currently caters to.  
 
-## Use 
+# Use 
 ---
-# User's can utilize repositories to easily obtain stems for a project without 
-# having to send each other the stems in folders or the project .flp 
+User's can utilize repositories to easily obtain stems for a project without 
+having to send each other the stems in folders or the project .flp 
 
 ### Features 
 ---
