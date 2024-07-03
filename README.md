@@ -1,5 +1,6 @@
-
+<p align = "center">
 ![alt text](https://github.com/osmosis10/versionController/blob/master/WinFormsApp1/Resources/favicon.ico)
+</p>
 
 ## CoLab !, Version Control GUI for DAW's
 
