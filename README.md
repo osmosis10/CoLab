@@ -1,4 +1,4 @@
-READ ME FOR TEST IMPLEMEMENTATION OF A VERSION CONTROL GUI FOR THE FL STUDIO DAW
+![alt text][logo](https://github.com/osmosis10/versionController/WinFormsApp1/Resources/mainMenuimage.jpg "Main Menu!")
 
 
 
