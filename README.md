@@ -15,12 +15,17 @@
 # Colab
 ---
  CoLab GUI, designed to test an implementation of version control for DAW's (Digital Audio Interface) 
- using *git*, like FL Studio which is what CoLab currently caters to.  
+ using *git*, like FL Studio which is what CoLab currently soley caters towards. I had the idea from 
+ my own experience using FL Studio and other creator's I know and thought that it was bizzare there was 
+ no clear application to provide a solution to this problem so I decided to use git to protype what it '
+ could look like
 
 # Use 
 ---
 User's can utilize repositories to easily obtain stems for a project without 
-having to send each other the stems in folders or the project .flp 
+having to send each other the stems in folders or the project .flp. CoLab will
+a project's stems to the working directory to be copied to the FL studio's
+recordings directory
 
 # Features 
 ---
@@ -33,8 +38,21 @@ having to send each other the stems in folders or the project .flp
 ## Existing Repo
 ### User's can enter a folder linked to an existing repo to either push or pull changes 
 ![alt text](https://github.com/osmosis10/versionController/blob/master/WinFormsApp1/Resources/ExistingProjectImage.jpg) 
+### Steps for *uploading*
+#### 1. Select Project name from file list
+#### 2. Write summary (commit message)
+#### 4. Click *upload* button
+
+### Steps for *downloading*
+#### 1. Select Project name from file list
+#### 2. Select the *Discard* or Save and Apply* local changes
+#### 3. Click *download* button
+
+### Revert (coming soon)
 
 ## Clone (Coming soon) 
 ### User's will be able to clone repo's to a folder of their choosing 
 
-
+# REQUREMENTS/CONSIDERATIONS
+## - Colab requires collaberators to be using the same version of FL Studio (20 or higher)
+## - Colab DOES NOT account for or keep track of any third party plug-in's used
