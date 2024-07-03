@@ -1,9 +1,13 @@
 <p align="center">
   <img src="https://github.com/osmosis10/versionController/blob/master/WinFormsApp1/Resources/favicon.ico?raw=true" alt="alt text">
-  ## CoLab !, Version Control GUI for DAW's
-
-  <img src="https://github.com/osmosis10/versionController/blob/master/WinFormsApp1/Resources/mainMenuimage.jpg" alt="alt text">
 </p>
+
+<h2 align="center">CoLab !, Version Control GUI for DAW's</h2>
+
+<p align="center">
+  <img src="https://github.com/osmosis10/versionController/blob/master/WinFormsApp1/Resources/mainMenuimage.jpg?raw=true" alt="alt text">
+</p>
+
 
 
 
