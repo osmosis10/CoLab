@@ -1,4 +1,4 @@
-![alt text][https://github.com/osmosis10/versionController/blob/master/WinFormsApp1/Resources/mainMenuimage.jpg]
+![alt text](https://github.com/osmosis10/versionController/blob/master/WinFormsApp1/Resources/mainMenuimage.jpg)
 
 
 
