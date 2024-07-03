@@ -24,7 +24,7 @@
 ---
 User's can utilize repositories to easily obtain stems for a project without 
 having to send each other the stems in folders or the project .flp. CoLab will
-a project's stems to the working directory to be copied to the FL studio's
+copy a project's stems to the working directory to be copied to the FL studio's
 recordings directory
 
 # Features 
