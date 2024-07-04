@@ -179,40 +179,29 @@ namespace WinFormsApp1
                 return;
             }
 
-            ProcessStartInfo processStartInfo = new ProcessStartInfo
+            string executablePath = Path.Combine(FolderPathStorage.ProjectFolderPath, FolderPathStorage.projectName);
+
+            if (!File.Exists(executablePath))
             {
-                FileName = "cmd.exe",
-                Arguments = $"/c cd \"{FolderPathStorage.ProjectFolderPath}\" && start {FolderPathStorage.projectName}",
-                RedirectStandardOutput = true,
-                RedirectStandardError = true,
-                UseShellExecute = false,
-                CreateNoWindow = true,
+                MessageBox.Show($"Executable '{FolderPathStorage.projectName}' not found in folder '{FolderPathStorage.ProjectFolderPath}'");
+                return;
+            }
+
+            ProcessStartInfo startProcessInfo = new ProcessStartInfo
+            {
+                FileName = executablePath,
+                WorkingDirectory = FolderPathStorage.ProjectFolderPath,
+                UseShellExecute = true // Use ShellExecute for direct execution of executable
             };
 
-            using (Process process = new Process())
+            try
             {
-                process.StartInfo = processStartInfo;
-                process.Start();
-
-                //Read output
-
-                String output = process.StandardOutput.ReadToEnd();
-                String error = process.StandardError.ReadToEnd();
-
-                process.WaitForExit();
-
-                // if the git command worked then display success message
-                if (process.ExitCode == 0)
-                {
-                    return;
-
-                }
-                // displays error message
-                else
-                {
-                    MessageBox.Show($"Launch failed for {FolderPathStorage.projectName} in folder {FolderPathStorage.ProjectFolderPath} {error}");
-                    return;
-                }
+                Process.Start(startProcessInfo);
+                //MessageBox.Show("Application launched successfully!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Failed to launch application: {ex.Message}");
             }
         }
 

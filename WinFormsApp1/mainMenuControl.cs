@@ -27,53 +27,9 @@ namespace WinFormsApp1
 
         /******************************************************************************************************************************/
         // create_button(): Launches credential modal to be used for creating new project folder
-        private void create_project(object sender, EventArgs e)
+        private void create_button(object sender, EventArgs e)
         {
-            Form modalBack = new Form();
-            using (modalForm modal = new modalForm())
-            {
-                modalBack.StartPosition = FormStartPosition.Manual;
-                modalBack.FormBorderStyle = FormBorderStyle.None;
-                modalBack.Opacity = .50d;
-                modalBack.BackColor = Color.Black;
-                modalBack.Size = MainFormInstance.Size;
-                modalBack.Location = MainFormInstance.Location;
-                modalBack.ShowInTaskbar = false;
-                modalBack.Show();
-                modal.Owner = modalBack;
-
-                parentX = MainFormInstance.Location.X;
-                parentY = MainFormInstance.Location.Y;
-
-                // Set the initial position of the modal off-screen 
-                modal.StartPosition = FormStartPosition.Manual;
-                modal.Top = MainFormInstance.Top - modal.Height + 150; // Start above the main form
-                modal.Left = MainFormInstance.Left + (MainFormInstance.Width - modal.Width) / 2;
-
-                // Show the modal before starting the animation
-                modal.Shown += (s, args) =>
-                {
-                    System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
-                    timer.Interval = 10; // Set time animation
-                    timer.Tick += (s2, args2) =>
-                    {
-                        if (modal.Top < MainFormInstance.Top + 100)
-                        {
-                            modal.Top += 5; // Move the modal down
-                        }
-                        else
-                        {
-                            timer.Stop();
-                        }
-                    };
-                    timer.Start();
-                };
-
-
-
-                modal.ShowDialog();
-                modalBack.Dispose();
-            }
+            showModal();
         }
 
         /******************************************************************************************************************************/
@@ -150,19 +106,56 @@ namespace WinFormsApp1
             }
         }
 
-        private void CreateButton_Click(object sender, EventArgs e)
+        
+
+        private void showModal()
         {
+            Form modalBack = new Form();
+            using (modalForm modal = new modalForm())
+            {
+                modalBack.StartPosition = FormStartPosition.Manual;
+                modalBack.FormBorderStyle = FormBorderStyle.None;
+                modalBack.Opacity = .50d;
+                modalBack.BackColor = Color.Black;
+                modalBack.Size = MainFormInstance.Size;
+                modalBack.Location = MainFormInstance.Location;
+                modalBack.ShowInTaskbar = false;
+                modalBack.Show();
+                modal.Owner = modalBack;
 
-        }
+                parentX = MainFormInstance.Location.X;
+                parentY = MainFormInstance.Location.Y;
 
-        private void existing_click_Click(object sender, EventArgs e)
-        {
+                // Set the initial position of the modal off-screen 
+                modal.StartPosition = FormStartPosition.Manual;
+                modal.Top = MainFormInstance.Top - modal.Height + 150; // Start above the main form
+                modal.Left = MainFormInstance.Left + (MainFormInstance.Width - modal.Width) / 2;
 
-        }
+                // Show the modal before starting the animation
+                modal.Shown += (s, args) =>
+                {
+                    System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
+                    timer.Interval = 10; // Set time animation
+                    timer.Tick += (s2, args2) =>
+                    {
+                        if (modal.Top < MainFormInstance.Top + 100)
+                        {
+                            modal.Top += 5; // Move the modal down
+                        }
+                        else
+                        {
+                            timer.Stop();
+                        }
+                    };
+                    timer.Start();
+                };
 
-        private void button2_Click(object sender, EventArgs e)
-        {
 
+
+                modal.ShowDialog();
+                modalBack.Dispose();
+            }
         }
     }
+
 }

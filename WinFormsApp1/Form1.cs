@@ -150,7 +150,5 @@ namespace WinFormsApp1
             }
         }
 
-
-       
     }
 }
