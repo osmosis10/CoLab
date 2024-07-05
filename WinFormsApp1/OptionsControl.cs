@@ -48,7 +48,7 @@ namespace WinFormsApp1
                 ListViewItem selectedProject = projectList.SelectedItems[0];
                 String itemText = selectedProject.Text;
                 FolderPathStorage.projectName = selectedProject.Text; // store project name
-                                                                      
+
             }
         }
 
@@ -92,10 +92,6 @@ namespace WinFormsApp1
             // Commit message box
             if (FolderPathStorage.stemsSourcePath != null)
             {
-
-
-
-
                 FolderPathStorage.stemsDestinationPath = $"{FolderPathStorage.ProjectFolderPath}/stemStorage";
                 String stemsSource = FolderPathStorage.stemsSourcePath;
                 String stemDest = FolderPathStorage.stemsDestinationPath;
@@ -119,7 +115,7 @@ namespace WinFormsApp1
                 return;
             }
 
-            
+
             // FILE BROWSER
             using (FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog())
             {
@@ -518,7 +514,7 @@ namespace WinFormsApp1
                     {
                         string commitString = FolderPathStorage.commitMessage;
                         MessageBox.Show(commitString);
-                        
+
                     }
 
                     else
@@ -533,6 +529,28 @@ namespace WinFormsApp1
                 MessageBox.Show("Summary already created !");
                 return;
             }
+        }
+
+        private void view_all_files_click(object sender, EventArgs e)
+        {
+            /*
+            if (viewAllCheck.Checked)
+            {
+                //MessageBox.Show("Box checked");
+                string[] files = Directory.GetFiles(FolderPathStorage.ProjectFolderPath);
+                foreach (string file in files)
+                {
+                    String fileName = Path.GetFileName(file);
+                    var listViewItem = new ListViewItem(fileName);
+                    projectList.Items.Add(listViewItem);
+                }
+            }
+
+            if (!viewAllCheck.Checked)
+            {
+                //add_file_names(FolderPathStorage.ProjectFolderPath);
+            }
+            */
         }
     }
     /******************************************************************************************************************************/

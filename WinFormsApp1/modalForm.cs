@@ -269,7 +269,7 @@ namespace WinFormsApp1
 
 
         // consider adding this to folderpathstorage class or making it public
-        private void RunCommand(string command, string arguments, string workingDirectory)
+        public void RunCommand(string command, string arguments, string workingDirectory)
         {
             ProcessStartInfo processStartInfo = new ProcessStartInfo()
             {
@@ -297,7 +297,6 @@ namespace WinFormsApp1
 
         
     }
-
     // class to make round corners for modal form
     public class NativeMethods
     {

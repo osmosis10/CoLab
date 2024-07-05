@@ -33,6 +33,7 @@
             existing_click = new Button();
             button2 = new Button();
             mainTitle = new Label();
+            button1 = new Button();
             SuspendLayout();
             // 
             // CreateButton
@@ -46,7 +47,7 @@
             CreateButton.Name = "CreateButton";
             CreateButton.Size = new Size(215, 49);
             CreateButton.TabIndex = 0;
-            CreateButton.Text = "Create";
+            CreateButton.Text = "Create Project";
             CreateButton.UseVisualStyleBackColor = false;
             CreateButton.Click += create_button;
             // 
@@ -71,7 +72,7 @@
             button2.Cursor = Cursors.Hand;
             button2.FlatStyle = FlatStyle.Flat;
             button2.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button2.Location = new Point(226, 459);
+            button2.Location = new Point(226, 569);
             button2.Margin = new Padding(3, 4, 3, 4);
             button2.Name = "button2";
             button2.Size = new Size(215, 49);
@@ -91,12 +92,28 @@
             mainTitle.TabIndex = 3;
             mainTitle.Text = "Welcome to Co-Lab !";
             // 
+            // button1
+            // 
+            button1.BackColor = Color.FromArgb(255, 205, 41);
+            button1.Cursor = Cursors.Hand;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button1.Location = new Point(226, 450);
+            button1.Margin = new Padding(3, 4, 3, 4);
+            button1.Name = "button1";
+            button1.Size = new Size(215, 49);
+            button1.TabIndex = 4;
+            button1.Text = "Join Project";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += join_project_click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(83, 19, 122);
             ClientSize = new Size(665, 804);
+            Controls.Add(button1);
             Controls.Add(mainTitle);
             Controls.Add(button2);
             Controls.Add(existing_click);
@@ -118,5 +135,6 @@
         private Button existing_click;
         private Button button2;
         private Label mainTitle;
+        private Button button1;
     }
 }

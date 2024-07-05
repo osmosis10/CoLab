@@ -23,10 +23,10 @@ namespace WinFormsApp1
         private void create_button(object sender, EventArgs e)
         {
             showModal();
-            
-            
+
+
         }
-        
+
         /******************************************************************************************************************************/
         // project_click(): Upon selecting valid project folder, takes user to Version controller options
         private void project_click(object sender, EventArgs e)
@@ -59,6 +59,7 @@ namespace WinFormsApp1
         // RunGitStatus(): Run's git status to confirm folder is a repo
         private void RunGitStatus(String folderPath)
         {
+
             ProcessStartInfo ProcessStartInfo = new ProcessStartInfo
             {
                 FileName = "cmd.exe",
@@ -100,7 +101,7 @@ namespace WinFormsApp1
                 }
             }
         }
-        
+
         private void showModal()
         {
             Form modalBack = new Form();
@@ -150,5 +151,9 @@ namespace WinFormsApp1
             }
         }
 
+        private void join_project_click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
