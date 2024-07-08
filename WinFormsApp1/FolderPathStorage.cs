@@ -18,7 +18,9 @@ namespace WinFormsApp1
         public static String stemsSourcePath { get; set; } // path to FL studio stem folder
         public static String stemsDestinationPath { get; set; } // path
         public static String username {  get; set; } // username
-        public static String newFolderName { get; set; } 
+        public static String newFolderName { get; set; } // to be used for creation of new local folder
+
+        public static String cloneLink { get; set; } // stores the link to reote repository
         
         public static String token { get; set; } // Github acess token filepath
 
@@ -35,6 +37,7 @@ namespace WinFormsApp1
             username = null;
             newFolderName = null;
             token = null;
+            cloneLink = null;
             stashOrDiscard = 0;
         }
 
