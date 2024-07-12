@@ -57,7 +57,7 @@
             existing_click.Cursor = Cursors.Hand;
             existing_click.FlatStyle = FlatStyle.Flat;
             existing_click.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            existing_click.Location = new Point(226, 336);
+            existing_click.Location = new Point(226, 454);
             existing_click.Margin = new Padding(3, 4, 3, 4);
             existing_click.Name = "existing_click";
             existing_click.Size = new Size(215, 49);
@@ -98,7 +98,7 @@
             button1.Cursor = Cursors.Hand;
             button1.FlatStyle = FlatStyle.Flat;
             button1.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.Location = new Point(226, 450);
+            button1.Location = new Point(226, 328);
             button1.Margin = new Padding(3, 4, 3, 4);
             button1.Name = "button1";
             button1.Size = new Size(215, 49);
