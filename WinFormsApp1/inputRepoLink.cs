@@ -17,12 +17,17 @@ namespace WinFormsApp1
             InitializeComponent();
         }
 
-        private void commitTitle_Click(object sender, EventArgs e)
+        private void enter_link_box(object sender, EventArgs e)
         {
 
         }
 
-        private void enter_link_box(object sender, EventArgs e)
+        private void link_back_click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void confirm_click(object sender, EventArgs e)
         {
 
         }
