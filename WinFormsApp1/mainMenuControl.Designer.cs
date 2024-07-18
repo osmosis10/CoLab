@@ -29,9 +29,10 @@
         private void InitializeComponent()
         {
             mainTitle = new Label();
-            button2 = new Button();
-            existing_click = new Button();
-            CreateButton = new Button();
+            joinProject = new Button();
+            exitProject = new Button();
+            existingProject = new Button();
+            createProject = new Button();
             SuspendLayout();
             // 
             // mainTitle
@@ -45,60 +46,76 @@
             mainTitle.TabIndex = 7;
             mainTitle.Text = "Welcome to Co-Lab !";
             // 
-            // button2
+            // joinProject
             // 
-            button2.BackColor = Color.FromArgb(255, 205, 41);
-            button2.Cursor = Cursors.Hand;
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button2.Location = new Point(227, 459);
-            button2.Margin = new Padding(3, 4, 3, 4);
-            button2.Name = "button2";
-            button2.Size = new Size(215, 49);
-            button2.TabIndex = 6;
-            button2.Text = "Exit";
-            button2.UseVisualStyleBackColor = false;
-            button2.Click += exit_click;
+            joinProject.BackColor = Color.FromArgb(255, 205, 41);
+            joinProject.Cursor = Cursors.Hand;
+            joinProject.FlatStyle = FlatStyle.Flat;
+            joinProject.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            joinProject.Location = new Point(227, 336);
+            joinProject.Margin = new Padding(3, 4, 3, 4);
+            joinProject.Name = "joinProject";
+            joinProject.Size = new Size(215, 49);
+            joinProject.TabIndex = 11;
+            joinProject.Text = "Join Project";
+            joinProject.UseVisualStyleBackColor = false;
+            joinProject.Click += join_project_click;
             // 
-            // existing_click
+            // exitProject
             // 
-            existing_click.BackColor = Color.FromArgb(255, 205, 41);
-            existing_click.Cursor = Cursors.Hand;
-            existing_click.FlatStyle = FlatStyle.Flat;
-            existing_click.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            existing_click.Location = new Point(227, 336);
-            existing_click.Margin = new Padding(3, 4, 3, 4);
-            existing_click.Name = "existing_click";
-            existing_click.Size = new Size(215, 49);
-            existing_click.TabIndex = 5;
-            existing_click.Text = "Existing Project";
-            existing_click.UseVisualStyleBackColor = false;
-            existing_click.Click += project_click;
+            exitProject.BackColor = Color.FromArgb(255, 205, 41);
+            exitProject.Cursor = Cursors.Hand;
+            exitProject.FlatStyle = FlatStyle.Flat;
+            exitProject.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            exitProject.Location = new Point(227, 569);
+            exitProject.Margin = new Padding(3, 4, 3, 4);
+            exitProject.Name = "exitProject";
+            exitProject.Size = new Size(215, 49);
+            exitProject.TabIndex = 10;
+            exitProject.Text = "Exit";
+            exitProject.UseVisualStyleBackColor = false;
+            exitProject.Click += exit_click;
             // 
-            // CreateButton
+            // existingProject
             // 
-            CreateButton.BackColor = Color.FromArgb(255, 205, 41);
-            CreateButton.Cursor = Cursors.Hand;
-            CreateButton.FlatStyle = FlatStyle.Flat;
-            CreateButton.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            CreateButton.Location = new Point(226, 203);
-            CreateButton.Margin = new Padding(3, 4, 3, 4);
-            CreateButton.Name = "CreateButton";
-            CreateButton.Size = new Size(215, 49);
-            CreateButton.TabIndex = 4;
-            CreateButton.Text = "Create";
-            CreateButton.UseVisualStyleBackColor = false;
-            CreateButton.Click += create_button;
+            existingProject.BackColor = Color.FromArgb(255, 205, 41);
+            existingProject.Cursor = Cursors.Hand;
+            existingProject.FlatStyle = FlatStyle.Flat;
+            existingProject.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            existingProject.Location = new Point(227, 459);
+            existingProject.Margin = new Padding(3, 4, 3, 4);
+            existingProject.Name = "existingProject";
+            existingProject.Size = new Size(215, 49);
+            existingProject.TabIndex = 9;
+            existingProject.Text = "Existing Project";
+            existingProject.UseVisualStyleBackColor = false;
+            existingProject.Click += project_click;
+            // 
+            // createProject
+            // 
+            createProject.BackColor = Color.FromArgb(255, 205, 41);
+            createProject.Cursor = Cursors.Hand;
+            createProject.FlatStyle = FlatStyle.Flat;
+            createProject.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            createProject.Location = new Point(226, 203);
+            createProject.Margin = new Padding(3, 4, 3, 4);
+            createProject.Name = "createProject";
+            createProject.Size = new Size(215, 49);
+            createProject.TabIndex = 8;
+            createProject.Text = "Create Project";
+            createProject.UseVisualStyleBackColor = false;
+            createProject.Click += create_button;
             // 
             // mainMenuControl
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(83, 19, 122);
+            Controls.Add(joinProject);
+            Controls.Add(exitProject);
+            Controls.Add(existingProject);
+            Controls.Add(createProject);
             Controls.Add(mainTitle);
-            Controls.Add(button2);
-            Controls.Add(existing_click);
-            Controls.Add(CreateButton);
             Margin = new Padding(3, 4, 3, 4);
             Name = "mainMenuControl";
             Size = new Size(686, 867);
@@ -109,8 +126,9 @@
         #endregion
 
         private Label mainTitle;
-        private Button button2;
-        private Button existing_click;
-        private Button CreateButton;
+        private Button joinProject;
+        private Button exitProject;
+        private Button existingProject;
+        private Button createProject;
     }
 }

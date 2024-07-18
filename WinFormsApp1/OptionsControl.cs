@@ -432,18 +432,59 @@ namespace WinFormsApp1
             if (folderName == null)
             {
                 folderName = FolderPathStorage.ProjectFolderPath;
+                
             }
-
+            
             string[] files = Directory.GetFiles(folderName);
-            foreach (string file in files)
+            string[] folders = Directory.GetDirectories(FolderPathStorage.ProjectFolderPath);
+
+            projectList.Items.Clear();
+
+            // Adds only fl project(s)
+            if (!viewAllCheck.Checked)
             {
-                if (file.EndsWith(".flp"))
+                foreach (string file in files)
                 {
-                    String fileName = Path.GetFileName(file);
-                    var listViewItem = new ListViewItem(fileName);
-                    projectList.Items.Add(listViewItem);
+                    if (file.EndsWith(".flp"))
+                    {
+                        String fileName = Path.GetFileName(file);
+                        var listViewItem = new ListViewItem(fileName);
+                        projectList.Items.Add(listViewItem);
+                    }
+                }
+                return;
+            }
+            
+
+            if (viewAllCheck.Checked)
+            {
+                
+               // Show's all relevant files in file list not just .flp project
+                foreach (string file in files)
+                {
+                    if (file.EndsWith(".flp") && !file.EndsWith(".md"))
+                    {
+                        String fileName = Path.GetFileName(file);
+                        var listViewItem = new ListViewItem(fileName);
+
+                        projectList.Items.Add(listViewItem);
+                    }
+
                 }
 
+                // Show's all relevant folders in file list
+                foreach (string folder in folders)
+                {
+                    
+                    if (!folder.EndsWith(".git"))
+                    {
+                        folderName = Path.GetFileName(folder);
+                        var listViewItem = new ListViewItem(folderName);
+
+                        projectList.Items.Add(listViewItem);
+                    }
+
+                }
             }
         }
 
@@ -533,24 +574,115 @@ namespace WinFormsApp1
 
         private void view_all_files_click(object sender, EventArgs e)
         {
-            /*
+
             if (viewAllCheck.Checked)
             {
                 //MessageBox.Show("Box checked");
                 string[] files = Directory.GetFiles(FolderPathStorage.ProjectFolderPath);
+                string[] folders = Directory.GetDirectories(FolderPathStorage.ProjectFolderPath);
+
+                // Show's all relevant files in file list not just .flp project
                 foreach (string file in files)
                 {
-                    String fileName = Path.GetFileName(file);
-                    var listViewItem = new ListViewItem(fileName);
-                    projectList.Items.Add(listViewItem);
+                    if (!file.EndsWith(".flp") && !file.EndsWith(".md"))
+                    {
+                        String fileName = Path.GetFileName(file);
+                        var listViewItem = new ListViewItem(fileName);
+
+                        projectList.Items.Add(listViewItem);
+                    }
+
+                }
+
+                // Show's all relevant folders in file list
+                foreach (string folder in folders)
+                {
+                    if (!folder.EndsWith(".git"))
+                    {
+                        String folderName = Path.GetFileName(folder);
+                        var listViewItem = new ListViewItem(folderName);
+
+                        projectList.Items.Add(listViewItem);
+                    }
+
                 }
             }
 
+            // Clears list and only shows .flp projects
             if (!viewAllCheck.Checked)
             {
-                //add_file_names(FolderPathStorage.ProjectFolderPath);
+                projectList.Items.Clear();
+                add_file_names(FolderPathStorage.ProjectFolderPath);
             }
-            */
+
+        }
+
+        private void project_list_double_click(object sender, EventArgs e)
+        {
+            // Add check for if the double clicked item is a  folder
+            MessageBox.Show($"{projectList.SelectedItems.Count}");
+            if (projectList.SelectedItems.Count > 0)
+            {
+         
+                
+                ListViewItem selectedItem = projectList.SelectedItems[0];
+
+                if (!selectedItem.Text.Contains('.'))
+                {
+                    MessageBox.Show($"{selectedItem.GetType()}");
+                    String itemText = $"{FolderPathStorage.ProjectFolderPath}/{selectedItem.Text}"; // folder name
+                    String[] folderFiles = Directory.GetFiles(itemText);
+
+                    projectList.Items.Clear();
+
+                    var folderBack = new ListViewItem("..                          ");
+                    projectList.Items.Add(folderBack);
+
+                    // Populates listview iwth fikes from
+                    foreach (String file in folderFiles)
+                    {
+                        if (!file.EndsWith(".flp") || !file.EndsWith(".md"))
+                        {
+                            String fileName = Path.GetFileName(file);
+                            var listViewItem = new ListViewItem(fileName);
+
+                            projectList.Items.Add(listViewItem);
+                        }
+                    }
+                    return;
+                }
+
+                // If user wants to go back to parrent directory
+                if (selectedItem.Text == "..                          ")
+                {
+                    projectList.Items.Clear();
+                    add_file_names(FolderPathStorage.ProjectFolderPath);
+                }
+
+                // If user double clicks on something other than a directory
+                else
+                {
+                    MessageBox.Show("Error: Not a valid folder");
+                }
+            }
+
+            // User has not selected anything
+            else
+            {
+                MessageBox.Show("Please make a selection first");
+                return;
+            }
+        }
+
+        public void prev_folder(String curDiretoryPath)
+        {
+            ListViewItem selectedItem = projectList.SelectedItems[0];
+            String parent = System.IO.Directory.GetParent(curDiretoryPath).FullName;
+            projectList.Items.Clear();
+            var folderBack = new ListViewItem("..                          ");
+            projectList.Items.Add(folderBack);
+           add_file_names(parent);
+            
         }
     }
     /******************************************************************************************************************************/

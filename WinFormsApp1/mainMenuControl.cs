@@ -56,6 +56,11 @@ namespace WinFormsApp1
             MainFormInstance.Close();
         }
 
+        private void join_project_click(object sender, EventArgs e)
+        {
+            showModalCLone();
+        }
+
         /******************************************************************************************************************************
          * |GIT FUNCTIONS|
          * ***************************************************************************************************************************/
@@ -106,7 +111,6 @@ namespace WinFormsApp1
             }
         }
 
-        
 
         private void showModal()
         {
@@ -156,6 +160,55 @@ namespace WinFormsApp1
                 modalBack.Dispose();
             }
         }
+
+        private void showModalCLone()
+        {
+            Form modalClone = new Form();
+            using (inputRepoLink modal = new inputRepoLink())
+            {
+                modalClone.StartPosition = FormStartPosition.Manual;
+                modalClone.FormBorderStyle = FormBorderStyle.None;
+                modalClone.Opacity = .50d;
+                modalClone.BackColor = Color.Black;
+                modalClone.Size = MainFormInstance.Size;
+                modalClone.Location = MainFormInstance.Location;
+                modalClone.ShowInTaskbar = false;
+                modalClone.Show();
+                modal.Owner = modalClone;
+
+                parentX = MainFormInstance.Location.X;
+                parentY = MainFormInstance.Location.Y;
+
+                // Set the initial position of the modal off-screen 
+                modal.StartPosition = FormStartPosition.Manual;
+                modal.Top = MainFormInstance.Top - modal.Height + 150; // Start above the main form
+                modal.Left = MainFormInstance.Left + (MainFormInstance.Width - modal.Width) / 2;
+
+                // Show the modal before starting the animation
+                modal.Shown += (s, args) =>
+                {
+                    System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
+                    timer.Interval = 10; // Set time animation
+                    timer.Tick += (s2, args2) =>
+                    {
+                        if (modal.Top < MainFormInstance.Top + 100)
+                        {
+                            modal.Top += 8; // Move the modal down
+                        }
+                        else
+                        {
+                            timer.Stop();
+                        }
+                    };
+                    timer.Start();
+                };
+
+                modal.ShowDialog();
+                modalClone.Dispose();
+            }
+        }
+
+        
     }
 
 }

@@ -111,6 +111,7 @@
             projectList.UseCompatibleStateImageBehavior = false;
             projectList.View = View.Details;
             projectList.Click += project_list_click;
+            projectList.DoubleClick += project_list_double_click;
             // 
             // fileCol
             // 
