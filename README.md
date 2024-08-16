@@ -5,7 +5,7 @@
 <h2 align="center">|CoLab!| Version Control GUI for DAW's</h2>
 
 <p align="center">
-  <img src="https://github.com/osmosis10/WinFormsApp1/Resources/new_main_menu.png" alt="alt text">
+  <img src="https://github.com/osmosis10/versionController/blob/master/WinFormsApp1/Resources/new_main_menu.png" alt="alt text">
 </p>
 
 
@@ -37,10 +37,10 @@ recordings directory
 ---
 
 
-## Join project
+## Join project (Coming soon)
 ### User's are able to clone an existing repo to a folder with a simple UI to enter in
-### the repo link and a the local destination
-![alt text](https://github.com/osmosis10/versionController/blob/master/WinFormsApp1/Resources/join_image.jpg) 
+### the repo link and a select the local destination
+![alt text](https://github.com/osmosis10/versionController/blob/master/WinFormsApp1/Resources/join_feature.png)
 ---
 
 ## Existing Repo
