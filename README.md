@@ -2,10 +2,10 @@
   <img src="https://github.com/osmosis10/versionController/blob/master/WinFormsApp1/Resources/favicon.ico?raw=true" alt="alt text">
 </p>
 
-<h2 align="center">CoLab !, Version Control GUI for DAW's</h2>
+<h2 align="center">|CoLab!| Version Control GUI for DAW's</h2>
 
 <p align="center">
-  <img src="https://github.com/osmosis10/versionController/blob/master/WinFormsApp1/Resources/mainMenuimage.jpg?raw=true" alt="alt text">
+  <img src="https://github.com/osmosis10/versionController/blob/master/WinFormsApp1/Resources/new_main_menu?raw=true" alt="alt text">
 </p>
 
 
@@ -15,7 +15,7 @@
 # Colab
 ---
  CoLab GUI, designed to test an implementation of version control for DAW's (Digital Audio Interface) 
- using *git*, like FL Studio which is what CoLab currently soley caters towards. I had the idea from 
+ using *git*, for tools like FL Studio which is what CoLab currently soley caters towards. I had the idea from 
  my own experience using FL Studio and other creator's I know and thought that it was bizzare there was 
  no clear application to provide a solution to this problem so I decided to use git to protype what it '
  could look like
@@ -39,7 +39,9 @@ recordings directory
 
 ## Join project
 ### User's are able to clone an existing repo to a folder with a simple UI to enter in
-### the repo link
+### the repo link and a the local destination
+![alt text](https://github.com/osmosis10/versionController/blob/master/WinFormsApp1/Resources/join_image.jpg) 
+---
 
 ## Existing Repo
 ### User's can enter a folder linked to an existing repo to either push or pull changes 
