@@ -5,7 +5,7 @@
 <h2 align="center">|CoLab!| Version Control GUI for DAW's</h2>
 
 <p align="center">
-  <img src="https://github.com/osmosis10/versionController/blob/master/WinFormsApp1/Resources/new_main_menu?raw=true" alt="alt text">
+  <img src="https://github.com/osmosis10/WinFormsApp1/Resources/new_main_menu.png" alt="alt text">
 </p>
 
 
