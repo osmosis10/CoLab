@@ -30,11 +30,16 @@ recordings directory
 # Features 
 ---
 
-##  Create 
+##  Create Project
 ### User's can create repositories from the CoLab GUI by entering their github *username* 
 ### and entering a generated Github *personal access token* 
 ![alt text](https://github.com/osmosis10/versionController/blob/master/WinFormsApp1/Resources/CreateFeaturedImage.jpg) 
 ---
+
+
+## Join project
+### User's are able to clone an existing repo to a folder with a simple UI to enter in
+### the repo link
 
 ## Existing Repo
 ### User's can enter a folder linked to an existing repo to either push or pull changes 
@@ -49,14 +54,12 @@ recordings directory
 
 ### Steps for *downloading*
 #### 1. Select Project name from file list
-#### 2. Select the *Discard* or Save and Apply* local changes
+#### 2. Select the *Discard* or *Save* and *Apply* local changes
 #### 3. Click *download* button
 --
 
 ### Revert (coming soon)
 
-## Clone (Coming soon) 
-### User's will be able to clone repo's to a folder of their choosing 
 
 # REQUREMENTS/CONSIDERATIONS
 ## - Colab requires collaberators to be using the same version of FL Studio (20 or higher)
