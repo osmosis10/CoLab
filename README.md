@@ -12,7 +12,7 @@
 
 
 
-# Colab
+# CoLab
 ---
  CoLab GUI, designed to test an implementation of version control for DAW's (Digital Audio Workstation's) 
  using *git*, for tools like FL Studio which is what CoLab currently soley caters towards. I had the idea from 
@@ -63,5 +63,5 @@ recordings directory
 
 
 # REQUREMENTS/CONSIDERATIONS
-## - Colab requires collaberators to be using the same version of FL Studio (20 or higher)
-## - Colab DOES NOT account for or keep track of any third party plug-in's used
+## - CoLab requires collaberators to be using the same version of FL Studio (20 or higher)
+## - CoLab DOES NOT account for or keep track of any third party plug-in's used
