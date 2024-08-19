@@ -14,11 +14,10 @@
 
 # Colab
 ---
- CoLab GUI, designed to test an implementation of version control for DAW's (Digital Audio Interface) 
+ CoLab GUI, designed to test an implementation of version control for DAW's (Digital Audio Workstation's) 
  using *git*, for tools like FL Studio which is what CoLab currently soley caters towards. I had the idea from 
- my own experience using FL Studio and other creator's I know and thought that it was bizzare there was 
- no clear application to provide a solution to this problem so I decided to use git to protype what it '
- could look like
+ my own experience using FL Studio and other creator's I know and thought that it would be cool to expirement with 
+ a prototype to simulate what it could look like
 
 # Use 
 ---
