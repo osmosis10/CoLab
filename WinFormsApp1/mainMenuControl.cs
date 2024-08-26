@@ -113,6 +113,7 @@ namespace WinFormsApp1
             }
         }
 
+        // Pings google.com and if succesful returns True
         private bool checkConnection()
         {
             try
@@ -131,6 +132,7 @@ namespace WinFormsApp1
             }
         }
 
+        // Changes icon of wifi status by running checkConnection function
         private async void connetionIconAsync()
         {
             while (true)
