@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Formats.Tar;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -19,6 +20,7 @@ namespace WinFormsApp1
         public mainMenuControl()
         {
             InitializeComponent();
+            connetionIconAsync();
         }
         /******************************************************************************************************************************
          * |CLICK HANDLER'S|
@@ -111,6 +113,42 @@ namespace WinFormsApp1
             }
         }
 
+        private bool checkConnection()
+        {
+            try
+            {
+                Ping myPing = new Ping();
+                String host = "google.com";
+                byte[] buffer = new byte[32];
+                int timeout = 1000;
+                PingOptions pingOptions = new PingOptions();
+                PingReply reply = myPing.Send(host, timeout, buffer, pingOptions);
+                return (reply.Status == IPStatus.Success);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        private async void connetionIconAsync()
+        {
+            while (true)
+            {
+                Image newImage;
+                if (checkConnection())
+                {
+                    newImage = Image.FromFile("C:\\Users\\moses\\Desktop\\versionController\\WinFormsApp1\\Resources\\wifi.png");
+                    connection.Image = newImage;
+                }
+                else
+                {
+                    newImage = Image.FromFile("C:\\Users\\moses\\Desktop\\versionController\\WinFormsApp1\\Resources\\no-wifi.png");
+                    connection.Image = newImage;
+                }
+                await Task.Delay(3000);
+            }
+        }
 
         private void showModal()
         {
@@ -207,8 +245,6 @@ namespace WinFormsApp1
                 modalClone.Dispose();
             }
         }
-
-        
     }
 
 }

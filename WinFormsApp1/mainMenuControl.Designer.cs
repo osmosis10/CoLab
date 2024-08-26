@@ -33,6 +33,8 @@
             exitProject = new Button();
             existingProject = new Button();
             createProject = new Button();
+            connection = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)connection).BeginInit();
             SuspendLayout();
             // 
             // mainTitle
@@ -106,11 +108,24 @@
             createProject.UseVisualStyleBackColor = false;
             createProject.Click += create_button;
             // 
+            // connection
+            // 
+            connection.BackgroundImageLayout = ImageLayout.Zoom;
+            connection.Enabled = false;
+            connection.Image = Properties.Resources.no_wifi;
+            connection.Location = new Point(582, 12);
+            connection.Name = "connection";
+            connection.Size = new Size(43, 40);
+            connection.SizeMode = PictureBoxSizeMode.Zoom;
+            connection.TabIndex = 12;
+            connection.TabStop = false;
+            // 
             // mainMenuControl
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(83, 19, 122);
+            Controls.Add(connection);
             Controls.Add(joinProject);
             Controls.Add(exitProject);
             Controls.Add(existingProject);
@@ -119,6 +134,7 @@
             Margin = new Padding(3, 4, 3, 4);
             Name = "mainMenuControl";
             Size = new Size(686, 867);
+            ((System.ComponentModel.ISupportInitialize)connection).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -130,5 +146,6 @@
         private Button exitProject;
         private Button existingProject;
         private Button createProject;
+        private PictureBox connection;
     }
 }

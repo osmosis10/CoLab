@@ -1,6 +1,7 @@
 using Newtonsoft.Json;
 using System.Diagnostics;
 using System.Net.Http.Headers;
+using System.Net.NetworkInformation;
 using System.Text;
 
 namespace WinFormsApp1
@@ -11,6 +12,8 @@ namespace WinFormsApp1
         public Form1()
         {
             InitializeComponent();
+            connetionIconAsync();
+
 
         }
         /******************************************************************************************************************************
@@ -156,6 +159,43 @@ namespace WinFormsApp1
             }
         }
 
+        private bool checkConnection()
+        {
+            try
+            {
+                Ping myPing = new Ping();
+                String host = "google.com";
+                byte[] buffer = new byte[32];
+                int timeout = 1000;
+                PingOptions pingOptions = new PingOptions();
+                PingReply reply = myPing.Send(host, timeout, buffer, pingOptions);
+                return (reply.Status == IPStatus.Success);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        private async void connetionIconAsync()
+        {
+            while (true)
+            {
+                Image newImage;
+                if (checkConnection())
+                {
+                    newImage = Image.FromFile("C:\\Users\\moses\\Desktop\\versionController\\WinFormsApp1\\Resources\\wifi.png");
+                    connection.Image = newImage;
+                }
+                else
+                {
+                    newImage = Image.FromFile("C:\\Users\\moses\\Desktop\\versionController\\WinFormsApp1\\Resources\\no-wifi.png");
+                    connection.Image = newImage;
+                }
+                await Task.Delay(3000);
+            }
+        }
+
         private void showModalCLone()
         {
             Form modalClone = new Form();
@@ -204,7 +244,5 @@ namespace WinFormsApp1
                 modalClone.Dispose();
             }
         }
-
-        
     }
 }

@@ -34,6 +34,8 @@
             exitProject = new Button();
             mainTitle = new Label();
             JoinProject = new Button();
+            connection = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)connection).BeginInit();
             SuspendLayout();
             // 
             // createProject
@@ -107,12 +109,25 @@
             JoinProject.UseVisualStyleBackColor = false;
             JoinProject.Click += join_project_click;
             // 
+            // connection
+            // 
+            connection.BackgroundImageLayout = ImageLayout.Zoom;
+            connection.Enabled = false;
+            connection.Image = Properties.Resources.no_wifi;
+            connection.Location = new Point(582, 12);
+            connection.Name = "connection";
+            connection.Size = new Size(43, 40);
+            connection.SizeMode = PictureBoxSizeMode.Zoom;
+            connection.TabIndex = 5;
+            connection.TabStop = false;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(83, 19, 122);
             ClientSize = new Size(665, 804);
+            Controls.Add(connection);
             Controls.Add(JoinProject);
             Controls.Add(mainTitle);
             Controls.Add(exitProject);
@@ -125,6 +140,7 @@
             Name = "Form1";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Co-Lab";
+            ((System.ComponentModel.ISupportInitialize)connection).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -136,5 +152,6 @@
         private Button exitProject;
         private Label mainTitle;
         private Button JoinProject;
+        private PictureBox connection;
     }
 }
