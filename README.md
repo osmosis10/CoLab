@@ -5,20 +5,19 @@
 <h2 align="center">|CoLab!| Version Control GUI for DAW's</h2>
 
 <p align="center">
-  <img src="https://github.com/osmosis10/WinFormsApp1/Resources/new_main_menu.png" alt="alt text">
+  <img src="https://github.com/osmosis10/versionController/blob/master/WinFormsApp1/Resources/new_main_menu.png" alt="alt text">
 </p>
 
 
 
 
 
-# Colab
+# CoLab
 ---
- CoLab GUI, designed to test an implementation of version control for DAW's (Digital Audio Interface) 
+ CoLab GUI, designed to test an implementation of version control for DAW's (Digital Audio Workstation's) 
  using *git*, for tools like FL Studio which is what CoLab currently soley caters towards. I had the idea from 
- my own experience using FL Studio and other creator's I know and thought that it was bizzare there was 
- no clear application to provide a solution to this problem so I decided to use git to protype what it '
- could look like
+ my own experience using FL Studio and other creator's I know and thought that it would be cool to expirement with 
+ a prototype to simulate what it could look like
 
 # Use 
 ---
@@ -37,10 +36,10 @@ recordings directory
 ---
 
 
-## Join project
+## Join project (Coming soon)
 ### User's are able to clone an existing repo to a folder with a simple UI to enter in
-### the repo link and a the local destination
-![alt text](https://github.com/osmosis10/versionController/blob/master/WinFormsApp1/Resources/join_image.jpg) 
+### the repo link and a select the local destination
+![alt text](https://github.com/osmosis10/versionController/blob/master/WinFormsApp1/Resources/join_feature.png)
 ---
 
 ## Existing Repo
@@ -64,5 +63,5 @@ recordings directory
 
 
 # REQUREMENTS/CONSIDERATIONS
-## - Colab requires collaberators to be using the same version of FL Studio (20 or higher)
-## - Colab DOES NOT account for or keep track of any third party plug-in's used
+## - CoLab requires collaberators to be using the same version of FL Studio (20 or higher)
+## - CoLab DOES NOT account for or keep track of any third party plug-in's used
